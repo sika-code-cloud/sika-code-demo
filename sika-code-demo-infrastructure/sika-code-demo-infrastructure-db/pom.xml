@@ -11,5 +11,18 @@
 
     <artifactId>sika-code-demo-infrastructure-db</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.sika.code.demo</groupId>
+            <artifactId>sika-code-demo-infrastructure-common</artifactId>
+            <version>3.0.0-SNAPSHOT</version>
+        </dependency>
 
+        <!-- 移除tomcat-jdbc连接池 -->
+        <dependency>
+            <groupId>com.sika.code</groupId>
+            <artifactId>sika-code-db</artifactId>
+            <version>${com.sika.code.version}</version>
+        </dependency>
+    </dependencies>
 </project>

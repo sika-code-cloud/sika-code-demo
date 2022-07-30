@@ -11,5 +11,121 @@
 
     <artifactId>sika-code-demo-interfaces</artifactId>
 
+    <properties>
+        <sa-token.version>1.30.0</sa-token.version>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>com.sika.code.demo</groupId>
+            <artifactId>sika-code-demo-application</artifactId>
+            <version>3.0.0-SNAPSHOT</version>
+        </dependency>
 
+        <dependency>
+            <groupId>cn.dev33</groupId>
+            <artifactId>sa-token-spring-boot-starter</artifactId>
+            <version>${sa-token.version}</version>
+        </dependency>
+        <!-- Sa-Token整合SpringAOP实现注解鉴权 -->
+        <dependency>
+            <groupId>cn.dev33</groupId>
+            <artifactId>sa-token-spring-aop</artifactId>
+            <version>${sa-token.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.dev33</groupId>
+            <artifactId>sa-token-jwt</artifactId>
+            <version>${sa-token.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.dev33</groupId>
+            <artifactId>sa-token-dao-redis</artifactId>
+            <version>${sa-token.version}</version>
+        </dependency>
+        <!-- 提供Redis连接池 -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
+        </dependency>
+
+    </dependencies>
+
+    <profiles>
+        <!-- develop的节点配置:begin -->
+        <!-- 本地环境单节点部署 -->
+        <profile>
+            <id>develop</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <profileActive>develop</profileActive>
+            </properties>
+        </profile>
+        <!-- develop的节点配置:end -->
+
+        <!-- develop-debug的节点配置:begin -->
+        <profile>
+            <id>develop-debug</id>
+            <properties>
+                <profileActive>develop-debug</profileActive>
+            </properties>
+        </profile>
+        <!-- develop-debug的节点配置:end -->
+
+        <!-- test的节点配置:begin -->
+        <profile>
+            <id>test</id>
+            <properties>
+                <profileActive>test</profileActive>
+            </properties>
+        </profile>
+        <!-- test的节点配置:end -->
+
+        <!-- advance的节点配置:begin -->
+        <profile>
+            <id>advance</id>
+            <properties>
+                <profileActive>advance</profileActive>
+            </properties>
+        </profile>
+        <!-- advance的节点配置:end -->
+
+        <!-- product的节点配置:begin -->
+        <profile>
+            <id>product</id>
+            <properties>
+                <profileActive>product</profileActive>
+            </properties>
+        </profile>
+        <!-- product的节点配置:end -->
+    </profiles>
+
+    <build>
+        <finalName>sika-code-demo</finalName>
+        <filters>
+            <filter>src/main/resources/application-${profileActive}.yml</filter>
+        </filters>
+        <!-- 替换${key}内容 -->
+        <resources>
+            <resource>
+                <filtering>true</filtering>
+                <!-- 要到达最底层目录 -->
+                <directory>src/main/resources/</directory>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>

@@ -18,6 +18,17 @@
     <packaging>pom</packaging>
     <properties>
         <com.sika.code.version>3.0.0</com.sika.code.version>
+        <!--设置字符编码及java版本 -->
+        <project.build.targetJdk>1.8</project.build.targetJdk>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <dep.javax.servlet-api.version>3.1.0</dep.javax.servlet-api.version>
+        <jm.build.jvmSize>1024m</jm.build.jvmSize>
+        <jm.maven.version>3.0.5</jm.maven.version>
+        <!-- spring-boot依赖版本号 -->
+        <spring-boot-dependencies.version>2.3.9.RELEASE</spring-boot-dependencies.version>
+        <spring-cloud-dependencies.version>2020.0.4</spring-cloud-dependencies.version>
     </properties>
     <dependencies>
         <dependency>
@@ -25,6 +36,109 @@
             <artifactId>sika-code-core</artifactId>
             <version>${com.sika.code.version}</version>
         </dependency>
-    </dependencies>
 
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-batch</artifactId>
+        </dependency>
+    </dependencies>
+    <dependencyManagement>
+        <dependencies>
+            <!-- 集成spring-boot -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot-dependencies.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- 集成spring-cloud -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud-dependencies.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    <!--注意： 这里必须要添加，否则各种依赖有问题 -->
+    <repositories>
+        <repository>
+            <id>spring-release</id>
+            <name>Spring release</name>
+            <url>https://repo.spring.io/release/</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>repo1</id>
+            <name>repo1</name>
+            <url>https://repo1.maven.org/maven2/</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${project.build.targetJdk}</source>
+                    <target>${project.build.targetJdk}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                    <showWarnings>true</showWarnings>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                            <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>lib</classpathPrefix>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>deploy</id>
+                        <phase>deploy</phase>
+                        <goals>
+                            <goal>deploy</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <configuration>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

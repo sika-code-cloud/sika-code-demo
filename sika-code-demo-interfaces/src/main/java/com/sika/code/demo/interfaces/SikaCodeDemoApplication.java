@@ -14,16 +14,16 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author daiqi
  * @create 2019-05-10 21:16
  */
-@SpringBootApplication(scanBasePackages = {"com.sika.code.demo", "cn.hutool.extra.spring"})
+@SpringBootApplication(scanBasePackages = {"com.sika.code.demo", "com.sika.code", "cn.hutool.extra.spring"})
 @MapperScan({"com.sika.code.demo.**.mapper"})
 @Slf4j
-public class SikaCOdeDemoApplication {
+public class SikaCodeDemoApplication {
     //    static {
 //        System.setProperty("log4j2.isThreadContextMapInherimeble", "true");
 //        System.setProperty("dubbo.application.logger", "log4j2");
 //    }
     public static void main(String[] args) {
-        SpringApplication.run(SikaCOdeDemoApplication.class, args);
+        SpringApplication.run(SikaCodeDemoApplication.class, args);
 
     }
 

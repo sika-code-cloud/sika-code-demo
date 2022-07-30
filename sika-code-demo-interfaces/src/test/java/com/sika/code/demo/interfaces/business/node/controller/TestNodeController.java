@@ -7,7 +7,7 @@ import com.sika.code.core.base.test.BaseTestController;
 import com.sika.code.core.result.Result;
 import com.sika.code.demo.infrastructure.business.node.pojo.dto.NodeDTO;
 import com.sika.code.demo.infrastructure.business.node.pojo.query.NodeQuery;
-import com.sika.code.demo.interfaces.SikaCOdeDemoApplication;
+import com.sika.code.demo.interfaces.SikaCodeDemoApplication;
 import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -21,7 +21,7 @@ import java.util.List;
  * @author sikadai
  * @since 2022-07-30 13:45:35
  */
-@SpringBootTest(classes = SikaCOdeDemoApplication.class)
+@SpringBootTest(classes = SikaCodeDemoApplication.class)
 public class TestNodeController extends BaseTestController {
 
     @Test

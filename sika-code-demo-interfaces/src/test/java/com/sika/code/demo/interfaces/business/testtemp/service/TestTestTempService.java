@@ -7,7 +7,7 @@ import com.google.common.collect.Lists;
 import com.sika.code.demo.application.business.testtemp.service.TestTempService;
 import com.sika.code.demo.infrastructure.business.testtemp.pojo.dto.TestTempDTO;
 import com.sika.code.demo.infrastructure.business.testtemp.pojo.query.TestTempQuery;
-import com.sika.code.demo.interfaces.SikaCOdeDemoApplication;
+import com.sika.code.demo.interfaces.SikaCodeDemoApplication;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -22,7 +22,7 @@ import java.util.List;
  * @author sikadai
  * @since 2022-07-30 12:58:24
  */
-@SpringBootTest(classes = SikaCOdeDemoApplication.class)
+@SpringBootTest(classes = SikaCodeDemoApplication.class)
 public class TestTestTempService extends BaseTestService {
     @Resource
     private TestTempService testTempService;

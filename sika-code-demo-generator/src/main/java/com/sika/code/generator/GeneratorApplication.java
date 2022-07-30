@@ -1,7 +1,7 @@
 package com.sika.code.generator;
 
 import com.google.common.collect.Lists;
-import com.sika.code.demo.interfaces.SikaCOdeDemoApplication;
+import com.sika.code.demo.interfaces.SikaCodeDemoApplication;
 import com.sika.code.generator.dto.GeneratorClientDTO;
 import lombok.extern.slf4j.Slf4j;
 
@@ -30,8 +30,8 @@ public class GeneratorApplication {
 
         clientDTO.setGenerateController(true);
         clientDTO.setGenerateDomain(true);
-        clientDTO.setApplicationClassName(SikaCOdeDemoApplication.class.getName());
-        clientDTO.setApplicationSimpleName(SikaCOdeDemoApplication.class.getSimpleName());
+        clientDTO.setApplicationClassName(SikaCodeDemoApplication.class.getName());
+        clientDTO.setApplicationSimpleName(SikaCodeDemoApplication.class.getSimpleName());
         GeneratorCommander.doGenerator(clientDTO);
     }
 

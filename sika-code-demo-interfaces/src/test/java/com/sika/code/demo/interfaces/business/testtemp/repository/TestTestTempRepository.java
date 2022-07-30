@@ -6,7 +6,7 @@ import com.google.common.collect.Lists;
 import com.sika.code.demo.domain.business.testtemp.repository.TestTempRepository;
 import com.sika.code.demo.infrastructure.db.business.testtemp.po.TestTempPO;
 import com.sika.code.demo.infrastructure.business.testtemp.pojo.query.TestTempQuery;
-import com.sika.code.demo.interfaces.SikaCOdeDemoApplication;
+import com.sika.code.demo.interfaces.SikaCodeDemoApplication;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -21,7 +21,7 @@ import java.util.List;
  * @author sikadai
  * @since 2022-07-30 12:58:22
  */
-@SpringBootTest(classes = SikaCOdeDemoApplication.class)
+@SpringBootTest(classes = SikaCodeDemoApplication.class)
 public class TestTestTempRepository extends BaseTestRepository {
     @Resource
     private TestTempRepository testTempRepository;

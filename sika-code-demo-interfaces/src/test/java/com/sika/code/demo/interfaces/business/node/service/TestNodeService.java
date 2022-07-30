@@ -7,7 +7,7 @@ import com.google.common.collect.Lists;
 import com.sika.code.demo.application.business.node.service.NodeService;
 import com.sika.code.demo.infrastructure.business.node.pojo.dto.NodeDTO;
 import com.sika.code.demo.infrastructure.business.node.pojo.query.NodeQuery;
-import com.sika.code.demo.interfaces.SikaCOdeDemoApplication;
+import com.sika.code.demo.interfaces.SikaCodeDemoApplication;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -22,7 +22,7 @@ import java.util.List;
  * @author sikadai
  * @since 2022-07-30 13:45:34
  */
-@SpringBootTest(classes = SikaCOdeDemoApplication.class)
+@SpringBootTest(classes = SikaCodeDemoApplication.class)
 public class TestNodeService extends BaseTestService {
     @Resource
     private NodeService nodeService;

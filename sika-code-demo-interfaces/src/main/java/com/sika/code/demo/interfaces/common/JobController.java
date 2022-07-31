@@ -1,8 +1,8 @@
 package com.sika.code.demo.interfaces.common;
 
-import com.sika.code.demo.domain.common.batch.standard.bean.common.BatchBean;
-import com.sika.code.demo.domain.common.batch.standard.context.StandardContext;
-import com.sika.code.demo.domain.common.batch.standard.entity.StandardBatchEntity;
+import com.sika.code.batch.standard.bean.common.BatchBean;
+import com.sika.code.batch.standard.context.StandardContext;
+import com.sika.code.batch.standard.entity.StandardBatchEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.web.bind.annotation.GetMapping;

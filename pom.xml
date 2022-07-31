@@ -17,7 +17,7 @@
     </modules>
     <packaging>pom</packaging>
     <properties>
-        <com.sika.code.version>3.0.2</com.sika.code.version>
+        <io.github.sika-code.version>3.0.2</io.github.sika-code.version>
         <!--设置字符编码及java版本 -->
         <project.build.targetJdk>1.8</project.build.targetJdk>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -34,13 +34,9 @@
         <dependency>
             <groupId>io.github.sika-code-cloud</groupId>
             <artifactId>sika-code-core</artifactId>
-            <version>${com.sika.code.version}</version>
+            <version>${io.github.sika-code.version}</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-batch</artifactId>
-        </dependency>
     </dependencies>
     <dependencyManagement>
         <dependencies>

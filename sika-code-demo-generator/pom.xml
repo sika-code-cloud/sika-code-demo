@@ -15,7 +15,7 @@
         <dependency>
             <groupId>io.github.sika-code-cloud</groupId>
             <artifactId>sika-code-generator</artifactId>
-            <version>${com.sika.code.version}</version>
+            <version>${io.github.sika-code.version}</version>
         </dependency>
         <dependency>
             <groupId>com.sika.code.demo</groupId>

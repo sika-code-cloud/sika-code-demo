@@ -20,7 +20,7 @@
 
         <!-- 移除tomcat-jdbc连接池 -->
         <dependency>
-            <groupId>com.sika.code</groupId>
+            <groupId>io.github.sika-code-cloud</groupId>
             <artifactId>sika-code-db</artifactId>
             <version>${com.sika.code.version}</version>
         </dependency>

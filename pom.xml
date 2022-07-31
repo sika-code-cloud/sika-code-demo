@@ -17,7 +17,7 @@
     </modules>
     <packaging>pom</packaging>
     <properties>
-        <com.sika.code.version>3.0.0</com.sika.code.version>
+        <com.sika.code.version>3.0.2</com.sika.code.version>
         <!--设置字符编码及java版本 -->
         <project.build.targetJdk>1.8</project.build.targetJdk>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -32,7 +32,7 @@
     </properties>
     <dependencies>
         <dependency>
-            <groupId>com.sika.code</groupId>
+            <groupId>io.github.sika-code-cloud</groupId>
             <artifactId>sika-code-core</artifactId>
             <version>${com.sika.code.version}</version>
         </dependency>

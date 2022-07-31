@@ -13,7 +13,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.sika.code</groupId>
+            <groupId>io.github.sika-code-cloud</groupId>
             <artifactId>sika-code-generator</artifactId>
             <version>${com.sika.code.version}</version>
         </dependency>

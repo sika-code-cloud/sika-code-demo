@@ -14,7 +14,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author daiqi
  * @create 2019-05-10 21:16
  */
-@SpringBootApplication(scanBasePackages = {"com.sika.code.demo", "com.sika.code", "cn.hutool.extra.spring"})
+@SpringBootApplication(scanBasePackages = {"com.sika.code.demo", "com.sika.code"})
 @MapperScan({"com.sika.code.demo.**.mapper"})
 @Slf4j
 public class SikaCodeDemoApplication {

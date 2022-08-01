@@ -23,7 +23,7 @@ public class SaTokenConfigure implements WebMvcConfigurer {
         // 注册Sa-Token的路由拦截器
         registry.addInterceptor(new SaRouteInterceptor())
                 .addPathPatterns("/**")
-                .excludePathPatterns("/auth/login", "/test/login", "/**/anon", "/**/favicon.ico", "/xrebel");
+                .excludePathPatterns("/auth/login", "/test/login", "/**/anon", "/user/**","/**/favicon.ico", "/xrebel");
     }
 
     // 获取配置Bean (以代码的方式配置Sa-Token, 此配置会覆盖yml中的配置)

@@ -9,9 +9,14 @@ import com.sika.code.demo.infrastructure.business.user.pojo.query.UserQuery;
 import com.sika.code.demo.infrastructure.business.user.pojo.dto.UserDTO;
 
 import com.sika.code.demo.application.business.user.service.UserService;
+
 import javax.annotation.Resource;
+
 import org.springframework.web.bind.annotation.RequestBody;
+
+import java.util.LinkedHashMap;
 import java.util.List;
+
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -37,7 +42,7 @@ public class UserController extends BaseLiteflowServerController {
 
     @RequestMapping(value = "saveBatch")
     public Result saveBatch(@RequestBody List<UserDTO> dtos) {
-         return success(userService.saveBatch(dtos));
+        return success(userService.saveBatch(dtos));
     }
 
     @RequestMapping(value = "page")
@@ -54,4 +59,16 @@ public class UserController extends BaseLiteflowServerController {
     public Result list(@RequestBody UserQuery query) {
         return success(userService.list(query));
     }
+
+    @RequestMapping(value = "readData")
+    public Result readData(@RequestBody UserQuery query) {
+        return success(userService.readData(query));
+    }
+
+    @RequestMapping(value = "writeData")
+    public Result writeData(@RequestBody List<UserDTO> userDTOS) {
+        userService.writeData(userDTOS);
+        return success(new LinkedHashMap<>());
+    }
+
 }

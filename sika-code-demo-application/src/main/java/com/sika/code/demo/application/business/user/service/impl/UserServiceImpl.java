@@ -40,7 +40,7 @@ public class UserServiceImpl extends BaseServiceImpl<Long, UserPO, UserDTO, User
     public List<UserDTO> readData(UserQuery query) {
         log.info("执行查询：{}", JSON.toJSONString(query));
         List<UserDTO> userDTOSRet = Lists.newArrayList();
-        Long start = query.getStartIndex();
+        Long start = query.getStartIndex() + 1;
         int count = 0;
         for (int i = start.intValue(); i < userDTOS.size(); ++i) {
             if (count >= query.getPageSize()) {

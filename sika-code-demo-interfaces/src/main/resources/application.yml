@@ -1,7 +1,7 @@
 # Spring boot application
 spring:
   application:
-    name: liteflow-admin-server
+    name: sika-code-demo
   profiles:
     active: @profileActive@
     # Base packages to scan Dubbo Component: @org.apache.dubbo.config.annotation.Service

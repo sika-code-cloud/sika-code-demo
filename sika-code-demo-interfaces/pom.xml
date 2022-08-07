@@ -25,6 +25,11 @@
             <artifactId>sika-code-batch</artifactId>
             <version>${io.github.sika-code.version}</version>
         </dependency>
+        <dependency>
+            <groupId>io.github.sika-code-cloud</groupId>
+            <artifactId>sika-code-cache</artifactId>
+            <version>${io.github.sika-code.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>cn.dev33</groupId>

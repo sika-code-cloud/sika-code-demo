@@ -17,7 +17,7 @@
     </modules>
     <packaging>pom</packaging>
     <properties>
-        <io.github.sika-code.version>3.0.5</io.github.sika-code.version>
+        <io.github.sika-code.version>3.0.7</io.github.sika-code.version>
         <!--设置字符编码及java版本 -->
         <project.build.targetJdk>1.8</project.build.targetJdk>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -25,7 +25,7 @@
         <java.version>1.8</java.version>
         <dep.javax.servlet-api.version>3.1.0</dep.javax.servlet-api.version>
         <jm.build.jvmSize>1024m</jm.build.jvmSize>
-        <jm.maven.version>3.0.5</jm.maven.version>
+        <jm.maven.version>3.0.7</jm.maven.version>
         <!-- spring-boot依赖版本号 -->
         <spring-boot-dependencies.version>2.3.9.RELEASE</spring-boot-dependencies.version>
         <spring-cloud-dependencies.version>2020.0.4</spring-cloud-dependencies.version>

@@ -1,6 +1,7 @@
 package com.sika.code.demo.infrastructure.db.business.node.po;
 
 import com.sika.code.core.base.pojo.po.BasePO;
+import com.sika.code.db.po.BasePoAuto;
 import lombok.Getter;
 import lombok.Setter;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -15,7 +16,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 @Getter
 @Setter
 @TableName("lf_node")
-public class NodePO extends BasePO<Long> {
+public class NodePO extends BasePoAuto<Long> {
     private static final long serialVersionUID = 1L;
     /**
      * 创建人标识

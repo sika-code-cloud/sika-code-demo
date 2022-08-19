@@ -8,7 +8,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="sika-code-core" />
+    <orderEntry type="library" name="Maven: io.github.sika-code-cloud:sika-code-core:3.0.7" level="project" />
     <orderEntry type="library" name="Maven: com.github.ben-manes.caffeine:caffeine:2.8.8" level="project" />
     <orderEntry type="library" name="Maven: org.checkerframework:checker-qual:3.8.0" level="project" />
     <orderEntry type="library" name="Maven: com.google.errorprone:error_prone_annotations:2.4.0" level="project" />

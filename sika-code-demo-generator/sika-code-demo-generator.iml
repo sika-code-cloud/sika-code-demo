@@ -25,7 +25,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="sika-code-generator" />
+    <orderEntry type="library" name="Maven: io.github.sika-code-cloud:sika-code-generator:3.0.7" level="project" />
     <orderEntry type="library" name="Maven: com.baomidou:mybatis-plus-generator:3.5.1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.velocity:velocity:1.7" level="project" />
     <orderEntry type="library" name="Maven: commons-collections:commons-collections:3.2.1" level="project" />
@@ -36,8 +36,8 @@
     <orderEntry type="module" module-name="sika-code-demo-domain" />
     <orderEntry type="module" module-name="sika-code-demo-infrastructure-db" />
     <orderEntry type="module" module-name="sika-code-demo-infrastructure-common" />
-    <orderEntry type="module" module-name="sika-code-db" />
-    <orderEntry type="module" module-name="sika-code-batch" />
+    <orderEntry type="library" name="Maven: io.github.sika-code-cloud:sika-code-db:3.0.7" level="project" />
+    <orderEntry type="library" name="Maven: io.github.sika-code-cloud:sika-code-batch:3.0.7" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-batch:2.3.9.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.batch:spring-batch-core:4.2.5.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: io.micrometer:micrometer-core:1.5.11" level="project" />
@@ -67,7 +67,7 @@
     <orderEntry type="library" name="Maven: com.dtflys.forest:forest-spring:1.5.25" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-configuration-processor:2.3.9.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: com.google.protobuf:protobuf-java:3.14.0" level="project" />
-    <orderEntry type="module" module-name="sika-code-cache" />
+    <orderEntry type="library" name="Maven: io.github.sika-code-cloud:sika-code-cache:3.0.7" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-data-redis:2.3.9.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.data:spring-data-redis:2.3.7.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.data:spring-data-keyvalue:2.3.7.RELEASE" level="project" />
@@ -89,7 +89,7 @@
     <orderEntry type="library" name="Maven: cn.dev33:sa-token-core:1.30.0" level="project" />
     <orderEntry type="library" name="Maven: cn.dev33:sa-token-jwt:1.30.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.commons:commons-pool2:2.8.1" level="project" />
-    <orderEntry type="module" module-name="sika-code-core" />
+    <orderEntry type="library" name="Maven: io.github.sika-code-cloud:sika-code-core:3.0.7" level="project" />
     <orderEntry type="library" name="Maven: com.github.ben-manes.caffeine:caffeine:2.8.8" level="project" />
     <orderEntry type="library" name="Maven: org.checkerframework:checker-qual:3.8.0" level="project" />
     <orderEntry type="library" name="Maven: com.google.errorprone:error_prone_annotations:2.4.0" level="project" />

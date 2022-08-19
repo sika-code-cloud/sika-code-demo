@@ -27,7 +27,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="sika-code-demo-infrastructure-db" />
     <orderEntry type="module" module-name="sika-code-demo-infrastructure-common" />
-    <orderEntry type="module" module-name="sika-code-db" />
+    <orderEntry type="library" name="Maven: io.github.sika-code-cloud:sika-code-db:3.0.7" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-jdbc:2.3.9.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-jdbc:5.2.13.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: mysql:mysql-connector-java:8.0.23" level="project" />
@@ -64,7 +64,7 @@
     <orderEntry type="library" name="Maven: io.netty:netty-transport:4.1.59.Final" level="project" />
     <orderEntry type="library" name="Maven: io.projectreactor:reactor-core:3.3.14.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.reactivestreams:reactive-streams:1.0.3" level="project" />
-    <orderEntry type="module" module-name="sika-code-core" />
+    <orderEntry type="library" name="Maven: io.github.sika-code-cloud:sika-code-core:3.0.7" level="project" />
     <orderEntry type="library" name="Maven: com.github.ben-manes.caffeine:caffeine:2.8.8" level="project" />
     <orderEntry type="library" name="Maven: org.checkerframework:checker-qual:3.8.0" level="project" />
     <orderEntry type="library" name="Maven: com.google.errorprone:error_prone_annotations:2.4.0" level="project" />

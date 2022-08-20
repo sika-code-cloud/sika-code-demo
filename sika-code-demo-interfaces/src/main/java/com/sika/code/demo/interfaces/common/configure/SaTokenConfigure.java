@@ -1,10 +1,9 @@
 package com.sika.code.demo.interfaces.common.configure;
 
 import cn.dev33.satoken.config.SaTokenConfig;
-import cn.dev33.satoken.interceptor.SaRouteInterceptor;
 import cn.dev33.satoken.jwt.StpLogicJwtForSimple;
 import cn.dev33.satoken.stp.StpLogic;
-import com.sika.code.demo.interfaces.common.interceptor.MigrateInterceptor;
+import com.sika.code.demo.interfaces.common.migrate.interceptor.MigrateInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -6,8 +6,11 @@ import com.alibaba.fastjson.JSON;
 import com.sika.code.core.result.Result;
 import com.sika.code.demo.infrastructure.db.business.user.po.UserPO;
 import com.sika.code.demo.interfaces.common.controller.BaseLiteflowServerController;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Map;
 
 /**
  * <pre>
@@ -24,7 +27,8 @@ public class AuthController extends BaseLiteflowServerController {
 
 
     @RequestMapping(value = "list1")
-    public Result list1(String no) {
+    public Result list1(@RequestBody Map<String, Object> map) {
+        log.info("请求参数():{}", JSON.toJSONString(map));
         log.info("StpUtil.getSession():{}", JSON.toJSONString(StpUtil.getSession()));
         log.info("StpUtil.getTokenSession():{}", JSON.toJSONString(StpUtil.getTokenSession()));
         log.info("user-delete:{}", StpUtil.hasPermission("user-delete"));

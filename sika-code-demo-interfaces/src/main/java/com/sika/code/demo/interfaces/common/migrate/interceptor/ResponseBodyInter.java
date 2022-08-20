@@ -1,4 +1,4 @@
-package com.sika.code.demo.interfaces.common.interceptor;
+package com.sika.code.demo.interfaces.common.migrate.interceptor;
 
 import cn.dev33.satoken.context.SaHolder;
 import cn.dev33.satoken.stp.StpUtil;

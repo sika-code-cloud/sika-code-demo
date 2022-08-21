@@ -31,7 +31,6 @@ public class MigrateResultExecutorImpl implements MigrateResultExecutor {
     @Override
     public void execute(MigrateRuleResult ruleResult) {
         MigrateRuleResponse ruleResponse = (MigrateRuleResponse) SpringMVCUtil.getRequest().getAttribute("migrateRuleResponse");
-        log.info("获取:migrateRuleResponse：{}",  ruleResponse);
         if (needWriteResult(ruleResponse)) {
             log.info("获取{}", JSON.toJSONString(ruleResult.getResult()));
             // 异步发送结果给指定服务

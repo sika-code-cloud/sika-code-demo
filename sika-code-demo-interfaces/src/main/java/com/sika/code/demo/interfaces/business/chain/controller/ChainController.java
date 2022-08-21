@@ -8,7 +8,7 @@ import com.sika.code.demo.infrastructure.business.chain.pojo.query.ChainQuery;
 import com.sika.code.demo.infrastructure.business.chain.pojo.dto.ChainDTO;
 
 import com.sika.code.demo.application.business.chain.service.ChainService;
-import com.sika.code.demo.interfaces.common.controller.BaseLiteflowServerController;
+import com.sika.code.demo.interfaces.common.controller.BaseSikaCodeDemoController;
 import javax.annotation.Resource;
 import org.springframework.web.bind.annotation.RequestBody;
 import java.util.List;
@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("chain")
-public class ChainController extends BaseLiteflowServerController {
+public class ChainController extends BaseSikaCodeDemoController {
 
     @Resource
     private ChainService chainService;

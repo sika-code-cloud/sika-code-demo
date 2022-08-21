@@ -16,5 +16,6 @@ import java.util.List;
  */
 public interface UserService extends BaseService<Long, UserDTO> {
     List<UserDTO>  readData(UserQuery query);
+    List<UserDTO>  readDataRealData(UserQuery query);
     void writeData(List<UserDTO> dtos);
 }

@@ -3,6 +3,8 @@ package com.sika.code.demo.infrastructure.business.user.pojo.query;
 import com.sika.code.core.base.pojo.query.PageQuery;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -83,4 +85,5 @@ public class UserQuery extends PageQuery<Long> {
      */
     private Integer deleted;
     private List<Long> ids;
+    private Date startDate;
 }

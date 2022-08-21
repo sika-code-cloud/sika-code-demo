@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.Map;
 
-public class BaseLiteflowServerController extends BaseController {
+public class BaseSikaCodeDemoController extends BaseController {
 
     @Autowired
     protected HttpServletRequest request;

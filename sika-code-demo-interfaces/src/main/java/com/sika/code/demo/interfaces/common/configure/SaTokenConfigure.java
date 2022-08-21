@@ -3,7 +3,7 @@ package com.sika.code.demo.interfaces.common.configure;
 import cn.dev33.satoken.config.SaTokenConfig;
 import cn.dev33.satoken.jwt.StpLogicJwtForSimple;
 import cn.dev33.satoken.stp.StpLogic;
-import com.sika.code.demo.interfaces.common.migrate.interceptor.MigrateInterceptor;
+import com.sika.code.migrate.interceptor.MigrateInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,6 +19,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class SaTokenConfigure implements WebMvcConfigurer {
     @Autowired
     private MigrateInterceptor migrateInterceptor;
+
     // 注册拦截器
     @Override
     public void addInterceptors(InterceptorRegistry registry) {

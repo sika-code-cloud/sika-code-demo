@@ -51,7 +51,7 @@ public class AuthController extends BaseLiteflowServerController {
     public Result login(String name, String pwd, String device) {
         // 第一步：比对前端提交的账号名称、密码
         Integer id = 10001;
-        if ("zhang".equals(name) && "123456".equals(pwd)) {
+        if ("zhang".equals(name) && "1234563".equals(pwd)) {
             // 第二步：根据账号id，进行登录
         } else if ("lisi".equals(name) && "123456".equals(pwd)) {
             id = 10002;
@@ -68,7 +68,7 @@ public class AuthController extends BaseLiteflowServerController {
         StpUtil.getSession().set("user", userPO);
         StpUtil.getSession().set("name", "zhangsan");
         StpUtil.getSession().set("name", "lisi");
-        return success("登录成功");
+        return success(userPO);
     }
 
     @RequestMapping(value = "getSessionKey")
@@ -89,6 +89,7 @@ public class AuthController extends BaseLiteflowServerController {
     @RequestMapping(value = "logout")
     public Result logout() {
         StpUtil.logoutByTokenValue(StpUtil.getTokenValue());
+        StpUtil.logout();
         return success("登出成功");
     }
 

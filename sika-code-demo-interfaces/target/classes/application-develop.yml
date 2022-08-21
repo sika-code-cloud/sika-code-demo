@@ -32,12 +32,12 @@ spring:
     ################### mysq end ##########################
     ################### redis 单机版 start ##########################
   redis:
-    host: 121.89.202.68
-    port: 6379
-#    host: localhost
+#    host: 121.89.202.68
 #    port: 6379
+    host: localhost
+    port: 6379
     timeout: 3000
-    password: SikaDesignAdmin20201225
+#    password: SikaDesignAdmin20201225
     ################### redis 单机版 end ##########################
     #    cluster:
     #      nodes: localhost:6379

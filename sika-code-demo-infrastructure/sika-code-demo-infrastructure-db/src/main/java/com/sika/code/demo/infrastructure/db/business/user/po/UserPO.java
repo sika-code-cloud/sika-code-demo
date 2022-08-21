@@ -82,4 +82,14 @@ public class UserPO extends BasePO<Long> {
      * 逻辑删除标志[1:删除,0:未删]
      */
     private Integer deleted;
+
+    @Override
+    public Long getId() {
+        return null;
+    }
+
+    @Override
+    public void setId(Long id) {
+
+    }
 }

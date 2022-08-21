@@ -40,4 +40,14 @@ public class TestTempPO extends BasePO<Long> {
      * 记录日期
      */
     private LocalDate recordDate;
+
+    @Override
+    public Long getId() {
+        return null;
+    }
+
+    @Override
+    public void setId(Long id) {
+
+    }
 }

@@ -53,4 +53,14 @@ public class NodePO extends BasePO<Long> {
      * 应用主键ID
      */
     private Long applicationId;
+
+    @Override
+    public Long getId() {
+        return null;
+    }
+
+    @Override
+    public void setId(Long id) {
+
+    }
 }

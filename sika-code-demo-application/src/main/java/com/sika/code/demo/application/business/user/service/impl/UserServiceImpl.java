@@ -53,6 +53,11 @@ public class UserServiceImpl extends BaseServiceImpl<Long, UserPO, UserDTO, User
     }
 
     @Override
+    public List<UserDTO> readDataRealData(UserQuery query) {
+        return convertToDtos(getRepository().listAsc(query));
+    }
+
+    @Override
     public void writeData(List<UserDTO> dtos) {
         log.info("执行写入测试---{}", JSON.toJSONString(dtos));
     }

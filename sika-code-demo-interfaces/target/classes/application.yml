@@ -23,7 +23,7 @@ tlog:
 
 
 liteflow:
-  rule-source: config/flow.xml
+  rule-source: config/flow.el.xml
   #-----------------以下非必须-----------------
   #liteflow是否开启，默认为true
   enable: true
@@ -54,6 +54,7 @@ liteflow:
     delay: 10000
     #监控日志打印每过多少时间执行一次，默认值为300000毫秒，也就是5分钟
     period: 10000
+
 ## =====================switch必须为true=============================
 ## jdbc开关key---sika.code.jdbc.switch
 

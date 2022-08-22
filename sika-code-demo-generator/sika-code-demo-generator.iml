@@ -94,6 +94,12 @@
     <orderEntry type="library" name="Maven: io.netty:netty-transport:4.1.59.Final" level="project" />
     <orderEntry type="library" name="Maven: io.projectreactor:reactor-core:3.3.14.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.reactivestreams:reactive-streams:1.0.3" level="project" />
+    <orderEntry type="module" module-name="sika-code-migrate" />
+    <orderEntry type="library" name="Maven: com.yomahub:liteflow-spring-boot-starter:2.8.4" level="project" />
+    <orderEntry type="library" name="Maven: com.yomahub:liteflow-spring:2.8.4" level="project" />
+    <orderEntry type="library" name="Maven: com.yomahub:liteflow-core:2.8.4" level="project" />
+    <orderEntry type="library" name="Maven: com.yomahub:liteflow-script-common:2.8.4" level="project" />
+    <orderEntry type="library" name="Maven: org.dom4j:dom4j:2.1.3" level="project" />
     <orderEntry type="library" name="Maven: cn.dev33:sa-token-spring-boot-starter:1.30.0" level="project" />
     <orderEntry type="library" name="Maven: cn.dev33:sa-token-servlet:1.30.0" level="project" />
     <orderEntry type="library" name="Maven: cn.dev33:sa-token-spring-aop:1.30.0" level="project" />

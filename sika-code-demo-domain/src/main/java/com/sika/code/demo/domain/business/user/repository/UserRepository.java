@@ -1,7 +1,10 @@
 package com.sika.code.demo.domain.business.user.repository;
 
+import com.sika.code.demo.infrastructure.business.user.pojo.query.UserQuery;
 import com.sika.code.demo.infrastructure.db.business.user.po.UserPO;
 import com.sika.code.core.base.repository.BaseRepository;
+
+import java.util.List;
 
 /**
  * <p>
@@ -17,4 +20,5 @@ public interface UserRepository extends BaseRepository<UserPO, Long> {
      * @param id : 主键ID
      */
      void verifyUserUnExistById(Long id);
+     List<UserPO> listAsc(UserQuery userQuery);
 }

@@ -5,9 +5,12 @@ import cn.dev33.satoken.stp.StpUtil;
 import com.alibaba.fastjson.JSON;
 import com.sika.code.core.result.Result;
 import com.sika.code.demo.infrastructure.db.business.user.po.UserPO;
-import com.sika.code.demo.interfaces.common.controller.BaseLiteflowServerController;
+import com.sika.code.demo.interfaces.common.controller.BaseSikaCodeDemoController;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Map;
 
 /**
  * <pre>
@@ -20,11 +23,12 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping(value = "/auth")
-public class AuthController extends BaseLiteflowServerController {
+public class AuthController extends BaseSikaCodeDemoController {
 
 
     @RequestMapping(value = "list1")
-    public Result list1(String no) {
+    public Result list1(@RequestBody Map<String, Object> map) {
+        log.info("请求参数():{}", JSON.toJSONString(map));
         log.info("StpUtil.getSession():{}", JSON.toJSONString(StpUtil.getSession()));
         log.info("StpUtil.getTokenSession():{}", JSON.toJSONString(StpUtil.getTokenSession()));
         log.info("user-delete:{}", StpUtil.hasPermission("user-delete"));
@@ -47,7 +51,7 @@ public class AuthController extends BaseLiteflowServerController {
     public Result login(String name, String pwd, String device) {
         // 第一步：比对前端提交的账号名称、密码
         Integer id = 10001;
-        if ("zhang".equals(name) && "123456".equals(pwd)) {
+        if ("zhang".equals(name) && "1234563".equals(pwd)) {
             // 第二步：根据账号id，进行登录
         } else if ("lisi".equals(name) && "123456".equals(pwd)) {
             id = 10002;
@@ -64,7 +68,7 @@ public class AuthController extends BaseLiteflowServerController {
         StpUtil.getSession().set("user", userPO);
         StpUtil.getSession().set("name", "zhangsan");
         StpUtil.getSession().set("name", "lisi");
-        return success("登录成功");
+        return success(userPO);
     }
 
     @RequestMapping(value = "getSessionKey")
@@ -85,6 +89,7 @@ public class AuthController extends BaseLiteflowServerController {
     @RequestMapping(value = "logout")
     public Result logout() {
         StpUtil.logoutByTokenValue(StpUtil.getTokenValue());
+        StpUtil.logout();
         return success("登出成功");
     }
 

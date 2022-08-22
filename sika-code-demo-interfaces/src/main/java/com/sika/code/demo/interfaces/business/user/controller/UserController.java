@@ -1,7 +1,7 @@
 package com.sika.code.demo.interfaces.business.user.controller;
 
 
-import com.sika.code.demo.interfaces.common.controller.BaseLiteflowServerController;
+import com.sika.code.demo.interfaces.common.controller.BaseSikaCodeDemoController;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sika.code.core.result.Result;
@@ -29,7 +29,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("user")
-public class UserController extends BaseLiteflowServerController {
+public class UserController extends BaseSikaCodeDemoController {
 
     @Resource
     private UserService userService;

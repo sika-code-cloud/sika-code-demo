@@ -45,6 +45,18 @@
         </where>
     </select>
 
+    <!-- 根据查询条件获取列表信息 -->
+    <select id="listAsc" resultMap="ResultMap" parameterType="com.sika.code.demo.infrastructure.business.user.pojo.query.UserQuery" >
+        SELECT <include refid="Column_List" />
+        FROM lf_user
+        <where>
+            is_deleted = 0
+            <include refid="query_sql" />
+            <if test="query.pageSize != null"> LIMIT #{query.pageSize}</if>
+        </where>
+        <include refid="order_by_sql"/>
+    </select>
+
     <!-- 根据查询条件获取Id列表信息 -->
     <select id="listId" resultType="java.lang.Long" parameterType="com.sika.code.demo.infrastructure.business.user.pojo.query.UserQuery" >
         SELECT id
@@ -131,6 +143,8 @@
                 #{item}
             </foreach>
         </if>
+        <if test="query.startDate != null">AND update_date > #{query.startDate}</if>
+        <if test="query.startIndex != null">AND id > #{query.startIndex}</if>
     </sql>
 
     <!-- 排序的sql -->

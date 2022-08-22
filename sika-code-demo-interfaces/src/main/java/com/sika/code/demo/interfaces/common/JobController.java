@@ -3,6 +3,8 @@ package com.sika.code.demo.interfaces.common;
 import com.sika.code.batch.standard.bean.common.BatchBean;
 import com.sika.code.batch.standard.context.StandardContext;
 import com.sika.code.batch.standard.entity.StandardBatchEntity;
+import com.sika.code.core.result.Result;
+import com.sika.code.demo.interfaces.common.controller.BaseSikaCodeDemoController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,19 +26,20 @@ import java.io.IOException;
  * @since 2022/6/3 10:18
  */
 @RestController
-public class JobController {
+public class JobController extends BaseSikaCodeDemoController {
     @Autowired
     protected StandardBatchEntity standardEntity;
 
     @RequestMapping("/custDoJob/anon")
-    public void custDoJob(@RequestBody BatchBean batchBean) {
+    public Result custDoJob(@RequestBody BatchBean batchBean) {
+        StandardContext standardContext = new StandardContext();
         try {
-            StandardContext standardContext = new StandardContext();
             standardContext.setBatchBean(batchBean);
             standardEntity.execute(standardContext);
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return success("执行成功");
     }
 
     @GetMapping("/doRead/anon")

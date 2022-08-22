@@ -1,9 +1,9 @@
 package com.sika.code.demo.infrastructure.db.business.testtemp.po;
 
-import com.sika.code.core.base.pojo.po.BasePO;
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.sika.code.db.po.BasePoAuto;
 import lombok.Getter;
 import lombok.Setter;
-import com.baomidou.mybatisplus.annotation.TableName;
 
 import java.time.LocalDate;
 
@@ -18,7 +18,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @TableName("lf_test_temp")
-public class TestTempPO extends BasePO<Long> {
+public class TestTempPO extends BasePoAuto<Long> {
     private static final long serialVersionUID = 1L;
     /**
      * 创建人标识

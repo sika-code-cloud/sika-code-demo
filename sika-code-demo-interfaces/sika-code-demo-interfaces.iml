@@ -29,12 +29,21 @@
     <orderEntry type="module" module-name="sika-code-demo-domain" />
     <orderEntry type="module" module-name="sika-code-demo-infrastructure-db" />
     <orderEntry type="module" module-name="sika-code-demo-infrastructure-common" />
-    <orderEntry type="library" name="Maven: io.github.sika-code-cloud:sika-code-db:3.0.7" level="project" />
+    <orderEntry type="module" module-name="sika-code-db" />
+    <orderEntry type="library" name="Maven: com.baomidou:mybatis-plus-boot-starter:3.4.3.4" level="project" />
+    <orderEntry type="library" name="Maven: com.baomidou:mybatis-plus:3.4.3.4" level="project" />
+    <orderEntry type="library" name="Maven: com.baomidou:mybatis-plus-extension:3.4.3.4" level="project" />
+    <orderEntry type="library" name="Maven: com.baomidou:mybatis-plus-core:3.4.3.4" level="project" />
+    <orderEntry type="library" name="Maven: com.baomidou:mybatis-plus-annotation:3.4.3.4" level="project" />
+    <orderEntry type="library" name="Maven: com.github.jsqlparser:jsqlparser:4.2" level="project" />
+    <orderEntry type="library" name="Maven: org.mybatis:mybatis:3.5.7" level="project" />
+    <orderEntry type="library" name="Maven: org.mybatis:mybatis-spring:2.0.6" level="project" />
     <orderEntry type="library" name="Maven: mysql:mysql-connector-java:8.0.23" level="project" />
-    <orderEntry type="library" name="Maven: io.github.sika-code-cloud:sika-code-batch:3.0.7" level="project" />
+    <orderEntry type="module" module-name="sika-code-batch" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-batch:2.3.9.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter:2.3.9.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot:2.3.9.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-autoconfigure:2.3.9.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-logging:2.3.9.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: ch.qos.logback:logback-classic:1.2.3" level="project" />
     <orderEntry type="library" name="Maven: ch.qos.logback:logback-core:1.2.3" level="project" />
@@ -79,7 +88,7 @@
     <orderEntry type="library" name="Maven: com.dtflys.forest:forest-spring:1.5.25" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-configuration-processor:2.3.9.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: com.google.protobuf:protobuf-java:3.14.0" level="project" />
-    <orderEntry type="library" name="Maven: io.github.sika-code-cloud:sika-code-cache:3.0.7" level="project" />
+    <orderEntry type="module" module-name="sika-code-cache" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-data-redis:2.3.9.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.data:spring-data-redis:2.3.7.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.data:spring-data-keyvalue:2.3.7.RELEASE" level="project" />
@@ -116,19 +125,10 @@
     <orderEntry type="library" name="Maven: org.aspectj:aspectjweaver:1.9.6" level="project" />
     <orderEntry type="library" name="Maven: cn.dev33:sa-token-jwt:1.30.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.commons:commons-pool2:2.8.1" level="project" />
-    <orderEntry type="library" name="Maven: io.github.sika-code-cloud:sika-code-core:3.0.7" level="project" />
+    <orderEntry type="module" module-name="sika-code-core" />
     <orderEntry type="library" name="Maven: com.github.ben-manes.caffeine:caffeine:2.8.8" level="project" />
     <orderEntry type="library" name="Maven: org.checkerframework:checker-qual:3.8.0" level="project" />
     <orderEntry type="library" name="Maven: com.google.errorprone:error_prone_annotations:2.4.0" level="project" />
-    <orderEntry type="library" name="Maven: com.baomidou:mybatis-plus-boot-starter:3.4.3.4" level="project" />
-    <orderEntry type="library" name="Maven: com.baomidou:mybatis-plus:3.4.3.4" level="project" />
-    <orderEntry type="library" name="Maven: com.baomidou:mybatis-plus-extension:3.4.3.4" level="project" />
-    <orderEntry type="library" name="Maven: com.baomidou:mybatis-plus-core:3.4.3.4" level="project" />
-    <orderEntry type="library" name="Maven: com.baomidou:mybatis-plus-annotation:3.4.3.4" level="project" />
-    <orderEntry type="library" name="Maven: com.github.jsqlparser:jsqlparser:4.2" level="project" />
-    <orderEntry type="library" name="Maven: org.mybatis:mybatis:3.5.7" level="project" />
-    <orderEntry type="library" name="Maven: org.mybatis:mybatis-spring:2.0.6" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-autoconfigure:2.3.9.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-test:2.3.9.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-test:2.3.9.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-test-autoconfigure:2.3.9.RELEASE" level="project" />

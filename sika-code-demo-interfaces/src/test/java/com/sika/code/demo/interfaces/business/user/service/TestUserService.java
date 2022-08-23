@@ -1,6 +1,7 @@
 package com.sika.code.demo.interfaces.business.user.service;
 
 
+import cn.hutool.core.util.IdUtil;
 import com.sika.code.core.base.test.BaseTestService;
 import com.sika.code.core.base.pojo.query.Page;
 import com.google.common.collect.Lists;
@@ -11,6 +12,7 @@ import com.sika.code.demo.interfaces.SikaCodeDemoApplication;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+
 import javax.annotation.Resource;
 import java.util.List;
 
@@ -61,12 +63,30 @@ public class TestUserService extends BaseTestService {
 
     @Test
     public void testSaveBatch() {
-        List<UserDTO> pos = Lists.newArrayList();
-        for (int i = 0; i < 10; ++i) {
+        UserQuery userQuery = buildUserQuery();
+        userQuery.setStartIndex(210000L);
+        log.info("查询开始");
+        List<UserDTO> userDTOS = userService.list(userQuery);
+        log.info("查询结束");
+        List<UserDTO> userDTOSForUpdate = Lists.newArrayList();
+        log.info("缓存开始");
+        for (int i = 0; i < userDTOS.size(); ++i) {
             UserDTO userDTO = buildUserDTO();
-            pos.add(userDTO);
+            userDTO.setId(userDTOS.get(i).getId());
+            if (i % 2 == 0) {
+                userDTO.setAddress(IdUtil.objectId());
+            } else {
+                userDTO.setUsername(IdUtil.simpleUUID());
+            }
+            userDTOSForUpdate.add(userDTO);
         }
-        boolean result = userService.saveBatch(pos);
+        log.info("缓存结束");
+        Long startTime = System.currentTimeMillis();
+        log.info("批量写入开始");
+        boolean result = userService.saveBatch(userDTOSForUpdate);
+        log.info("批量写入结束");
+        Long endTime = System.currentTimeMillis();
+        log.info("所用时间为：{}ms", (endTime - startTime));
         Assert.assertTrue(result);
     }
 

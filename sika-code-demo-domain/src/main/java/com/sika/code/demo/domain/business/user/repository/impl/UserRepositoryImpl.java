@@ -32,5 +32,15 @@ public class UserRepositoryImpl extends BaseRepositoryMyBatisPlusImpl<UserPO, Lo
     public List<UserPO> listAsc(UserQuery userQuery) {
         return getMapper().listAsc(userQuery);
     }
+
+    @Override
+    public int insertBatchReal(List<UserPO> list) {
+        return getMapper().insertBatchReal(list);
+    }
+
+    @Override
+    public int updateBatchReal(List<UserPO> list) {
+        return getMapper().batchUpdateCorporation(list);
+    }
 }
 

@@ -1,8 +1,10 @@
 package com.sika.code.demo.domain.business.user.repository;
 
+import com.sika.code.core.base.repository.BaseRepository;
+import com.sika.code.demo.domain.common.base.repository.BaseDemoRepository;
 import com.sika.code.demo.infrastructure.business.user.pojo.query.UserQuery;
 import com.sika.code.demo.infrastructure.db.business.user.po.UserPO;
-import com.sika.code.core.base.repository.BaseRepository;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -14,11 +16,26 @@ import java.util.List;
  * @author sikadai
  * @since 2022-07-30 12:59:41
  */
-public interface UserRepository extends BaseRepository<UserPO, Long> {
+public interface UserRepository extends BaseDemoRepository<UserPO> {
     /**
      * 校验ID对应的协作器是否不存在-不存在抛出异常
+     *
      * @param id : 主键ID
      */
-     void verifyUserUnExistById(Long id);
-     List<UserPO> listAsc(UserQuery userQuery);
+    void verifyUserUnExistById(Long id);
+
+    List<UserPO> listAsc(UserQuery userQuery);
+
+    /**
+     * 自定义批量插入
+     * 如果要自动填充，@Param(xx) xx参数名必须是 list/collection/array 3个的其中之一
+     */
+    int insertBatchReal(List<UserPO> list);
+
+    /**
+     * 自定义批量更新，条件为主键
+     * 如果要自动填充，@Param(xx) xx参数名必须是 list/collection/array 3个的其中之一
+     */
+    int updateBatchReal(List<UserPO> list);
+
 }

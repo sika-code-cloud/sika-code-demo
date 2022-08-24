@@ -1,17 +1,20 @@
 package com.sika.code.demo.interfaces.business.user.repository;
 
 
-import com.sika.code.core.base.test.BaseTestRepository;
+import cn.hutool.core.util.IdUtil;
 import com.google.common.collect.Lists;
+import com.sika.code.core.base.test.BaseTestRepository;
 import com.sika.code.demo.domain.business.user.repository.UserRepository;
-import com.sika.code.demo.infrastructure.db.business.user.po.UserPO;
 import com.sika.code.demo.infrastructure.business.user.pojo.query.UserQuery;
+import com.sika.code.demo.infrastructure.db.business.user.po.UserPO;
 import com.sika.code.demo.interfaces.SikaCodeDemoApplication;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * <p>
@@ -69,12 +72,34 @@ public class TestUserRepository extends BaseTestRepository {
 
     @Test
     public void testUpdateBatchSelectiveByPrimaryKey() {
-        List<UserPO> pos = Lists.newArrayList();
-        for (int i = 0; i < 10; ++i) {
-            UserPO userPO = buildUserPO();
-            pos.add(userPO);
+        UserQuery userQuery = buildUserQuery();
+        userQuery.setStartIndex(200000L);
+        log.info("查询开始");
+        List<UserPO> userDTOS = userRepository.list(userQuery);
+        log.info("查询结束");
+        List<UserPO> userDTOSForUpdate = Lists.newArrayList();
+        log.info("缓存开始");
+        log.info("缓存结束");
+        Long startTime = System.currentTimeMillis();
+        log.info("批量写入开始");
+        int count = 0;
+        for (int i = 0; i < userDTOS.size(); ++i) {
+            count++;
+            UserPO userDTO = buildUserPO();
+            userDTO.setId(userDTOS.get(i).getId());
+            userDTO.setAddress(IdUtil.simpleUUID());
+            userDTO.setUsername(IdUtil.objectId());
+            userDTO.setNickname(IdUtil.objectId());
+            userDTOSForUpdate.add(userDTO);
+            if (i % 1000 == 0) {
+                userRepository.updateBatchReal(userDTOSForUpdate);
+                userDTOSForUpdate.clear();
+            }
         }
-        int count = userRepository.saveBatch(pos);
+        userRepository.updateBatchReal(userDTOSForUpdate);
+        log.info("批量写入结束-更新的数据量为{}", count);
+        Long endTime = System.currentTimeMillis();
+        log.info("所用时间为：{}ms", (endTime - startTime));
         Assert.assertTrue(count > 0);
     }
 
@@ -143,7 +168,7 @@ public class TestUserRepository extends BaseTestRepository {
         userPO.setDeleted(null);
         return userPO;
     }
-    
+
     private UserQuery buildUserQuery() {
         UserQuery userQuery = new UserQuery();
         userQuery.setCreateBy(null);

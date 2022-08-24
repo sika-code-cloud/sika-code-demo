@@ -110,6 +110,58 @@
             <include refid="query_sql" />
         </where>
     </select>
+    <update id="batchUpdateCorporation" parameterType="java.util.List">
+<!--        <foreach collection="list" item="item" index="index" separator=";">-->
+<!--            update lf_user set-->
+<!--            <if test="item.address != null and item.address !=''">-->
+<!--                address = #{item.address},-->
+<!--            </if>-->
+<!--            update_date = now()-->
+<!--            where id = #{item.id}-->
+<!--        </foreach>-->
+        UPDATE lf_user
+        SET
+        address = CASE id
+        <foreach collection="list" item="item" index="index">
+            <choose>
+                <when test="item.address != null">
+                    WHEN #{item.id} THEN #{item.address}
+                </when>
+                <otherwise>
+                    WHEN #{item.id} THEN address
+                </otherwise>
+            </choose>
+        </foreach>
+        END,
+        username = CASE id
+        <foreach collection="list" item="item" index="index">
+            <choose>
+                <when test="item.username != null">
+                    WHEN #{item.id} THEN #{item.username}
+                </when>
+                <otherwise>
+                    WHEN #{item.id} THEN username
+                </otherwise>
+            </choose>
+        </foreach>
+        END,
+        nickname = CASE id
+        <foreach collection="list" item="item" index="index">
+            <choose>
+                <when test="item.nickname != null">
+                    WHEN #{item.id} THEN #{item.nickname}
+                </when>
+                <otherwise>
+                    WHEN #{item.id} THEN nickname
+                </otherwise>
+            </choose>
+        </foreach>
+        END
+        WHERE id IN
+        <foreach collection="list" item="item" index="index" open="(" separator="," close=")">
+            #{item.id}
+        </foreach>
+    </update>
 
     <!-- 根据查询条件SQL -->
     <sql id="query_sql" >

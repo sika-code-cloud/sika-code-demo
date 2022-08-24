@@ -17,4 +17,17 @@ import java.util.List;
  */
 public interface UserMapper extends BaseMapper<UserPO, Long> {
     List<UserPO> listAsc(@Param(value = "query") UserQuery query);
+
+    /**
+     * 自定义批量插入
+     * 如果要自动填充，@Param(xx) xx参数名必须是 list/collection/array 3个的其中之一
+     */
+    int insertBatchReal(@Param("list") List<UserPO> list);
+
+    /**
+     * 自定义批量更新，条件为主键
+     * 如果要自动填充，@Param(xx) xx参数名必须是 list/collection/array 3个的其中之一
+     */
+    int updateBatchReal(@Param("list") List<UserPO> list);
+    int batchUpdateCorporation(@Param("list") List<UserPO> list);
 }

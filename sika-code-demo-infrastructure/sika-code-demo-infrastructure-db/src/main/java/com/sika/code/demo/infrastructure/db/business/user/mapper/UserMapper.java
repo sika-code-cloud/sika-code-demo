@@ -28,6 +28,6 @@ public interface UserMapper extends BaseMapper<UserPO, Long> {
      * 自定义批量更新，条件为主键
      * 如果要自动填充，@Param(xx) xx参数名必须是 list/collection/array 3个的其中之一
      */
-    int updateBatchReal(@Param("list") List<UserPO> list);
+    int updateBatchReal(@Param("list") List<UserPO> list, @Param("condition") UserQuery query);
     int batchUpdateCorporation(@Param("list") List<UserPO> list);
 }

@@ -1,25 +1,90 @@
 package com.sika.code.demo.interfaces.common.batch;
 
 import com.baomidou.mybatisplus.core.injector.AbstractMethod;
+import com.baomidou.mybatisplus.core.metadata.TableFieldInfo;
 import com.baomidou.mybatisplus.core.metadata.TableInfo;
+import com.baomidou.mybatisplus.core.toolkit.sql.SqlScriptUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.mapping.MappedStatement;
 import org.apache.ibatis.mapping.SqlSource;
- 
+
 /**
  * 批量更新方法实现，条件为主键，选择性更新
  */
 @Slf4j
 public class UpdateBatchMethod extends AbstractMethod {
-  @Override
-  public MappedStatement injectMappedStatement(Class<?> mapperClass, Class<?> modelClass, TableInfo tableInfo) {
-    String sql = "<script>\n<foreach collection=\"list\" item=\"item\" separator=\";\">\nupdate %s %s where %s=#{%s} %s\n</foreach>\n</script>";
-    String additional = tableInfo.isWithVersion() ? tableInfo.getVersionFieldInfo().getVersionOli("item", "item.") : "" + tableInfo.getLogicDeleteSql(true, true);
-    String setSql = sqlSet(tableInfo.isWithLogicDelete(), false, tableInfo, false, "item", "item.");
-    String sqlResult = String.format(sql, tableInfo.getTableName(), setSql, tableInfo.getKeyColumn(), "item." + tableInfo.getKeyProperty(), additional);
-    //log.debug("sqlResult----->{}", sqlResult);
-    SqlSource sqlSource = languageDriver.createSqlSource(configuration, sqlResult, modelClass);
-    // 第三个参数必须和RootMapper的自定义方法名一致
-    return this.addUpdateMappedStatement(mapperClass, modelClass, "updateBatchReal", sqlSource);
-  } 
+    @Override
+    public MappedStatement injectMappedStatement(Class<?> mapperClass, Class<?> modelClass, TableInfo tableInfo) {
+        StringBuilder sqlResult = new StringBuilder();
+        StringBuilder updateTableBuilder = new StringBuilder();
+        sqlResult.append("<script>\n");
+        updateTableBuilder.append("UPDATE").append(tableInfo.getTableName()).append("SET");
+        // 构建caseWhen的语句
+        StringBuilder caseWhenSqlBuild = buildCaseWhen(tableInfo);
+        // 构建where的语句
+        StringBuilder whereSqlBuilder = buildWhereSql(tableInfo);
+        sqlResult.append(updateTableBuilder).append(caseWhenSqlBuild).append(whereSqlBuilder);
+        sqlResult.append("</script>");
+        if (log.isDebugEnabled()) {
+            log.info("组装后的sql为:{}", sqlResult);
+        }
+        SqlSource sqlSource = languageDriver.createSqlSource(configuration, sqlResult.toString(), modelClass);
+        return this.addUpdateMappedStatement(mapperClass, modelClass, "updateBatchCaseWhen", sqlSource);
+    }
+
+    /**
+     * <p>
+     * 构建caseWhen的跟新语句
+     * </p >
+     *
+     * @param tableInfo
+     * @return java.lang.StringBuilder
+     * @author sikadai
+     * @since 2022/8/24 18:42
+     */
+    private StringBuilder buildCaseWhen(TableInfo tableInfo) {
+        StringBuilder caseWhenSqlBuild = new StringBuilder();
+        int count = 0;
+        int fieldSize = tableInfo.getFieldList().size();
+        for (TableFieldInfo fieldInfo : tableInfo.getFieldList()) {
+            count++;
+            caseWhenSqlBuild.append(fieldInfo.getColumn()).append("CASE ").append(tableInfo.getKeyColumn());
+            caseWhenSqlBuild.append("<foreach collection=\"list\" item=\"item\" index=\"index\">\n");
+            caseWhenSqlBuild.append("<choose>\n");
+            caseWhenSqlBuild.append("<when test=\"item.").append(tableInfo.getKeyProperty()).append(" != null\">\n");
+            caseWhenSqlBuild.append("WHEN #{item.").append(tableInfo.getKeyProperty()).append("} THEN #{item.").append(fieldInfo.getProperty()).append("}");
+            caseWhenSqlBuild.append("</when>\n");
+            caseWhenSqlBuild.append("<otherwise>\n");
+            caseWhenSqlBuild.append("WHEN #{item.").append(tableInfo.getKeyProperty()).append("} THEN ").append(fieldInfo.getColumn());
+            caseWhenSqlBuild.append("</otherwise>\n");
+            caseWhenSqlBuild.append("</choose>\n");
+            caseWhenSqlBuild.append("</foreach>\n");
+            caseWhenSqlBuild.append("END");
+            if (count < fieldSize) {
+                caseWhenSqlBuild.append(",\n");
+            } else {
+                caseWhenSqlBuild.append("\n");
+            }
+        }
+        return caseWhenSqlBuild;
+    }
+
+    /**  
+     * <p>
+     * 构建where的批量更新
+     * </p >
+     * @author sikadai
+     * @since 2022/8/24 18:43
+     * @param tableInfo
+     * @return java.lang.StringBuilder
+     */  
+    private StringBuilder buildWhereSql(TableInfo tableInfo) {
+        StringBuilder whereSqlBuilder = new StringBuilder();
+        whereSqlBuilder.append("<where> ").append(tableInfo.getKeyColumn()).append(" IN\n");
+        whereSqlBuilder.append("<foreach collection=\"list\" item=\"item\" index=\"index\" open=\"(\" separator=\",\" close=\")\">\n");
+        whereSqlBuilder.append("#{item.}").append(tableInfo.getKeyProperty()).append("\n");
+        whereSqlBuilder.append("</foreach>");
+        whereSqlBuilder.append("</where>");
+        return whereSqlBuilder;
+    }
 }

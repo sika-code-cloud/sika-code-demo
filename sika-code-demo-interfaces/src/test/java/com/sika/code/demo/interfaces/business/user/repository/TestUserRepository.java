@@ -73,7 +73,7 @@ public class TestUserRepository extends BaseTestRepository {
     @Test
     public void testUpdateBatchSelectiveByPrimaryKey() {
         UserQuery userQuery = buildUserQuery();
-        userQuery.setStartIndex(200000L);
+        userQuery.setStartIndex(150000L);
         log.info("查询开始");
         List<UserPO> userDTOS = userRepository.list(userQuery);
         log.info("查询结束");
@@ -190,4 +190,5 @@ public class TestUserRepository extends BaseTestRepository {
         userQuery.setDeleted(null);
         return userQuery;
     }
+
 }

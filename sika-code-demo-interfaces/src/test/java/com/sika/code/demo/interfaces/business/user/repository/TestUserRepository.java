@@ -1,6 +1,7 @@
 package com.sika.code.demo.interfaces.business.user.repository;
 
 
+import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.IdUtil;
 import com.google.common.collect.Lists;
 import com.sika.code.core.base.test.BaseTestRepository;
@@ -14,7 +15,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.annotation.Resource;
 import java.util.List;
-import java.util.UUID;
 
 /**
  * <p>
@@ -73,7 +73,7 @@ public class TestUserRepository extends BaseTestRepository {
     @Test
     public void testUpdateBatchSelectiveByPrimaryKey() {
         UserQuery userQuery = buildUserQuery();
-        userQuery.setStartIndex(150000L);
+        userQuery.setStartIndex(180090L);
         log.info("查询开始");
         List<UserPO> userDTOS = userRepository.list(userQuery);
         log.info("查询结束");
@@ -90,13 +90,17 @@ public class TestUserRepository extends BaseTestRepository {
             userDTO.setAddress(IdUtil.simpleUUID());
             userDTO.setUsername(IdUtil.objectId());
             userDTO.setNickname(IdUtil.objectId());
+            userDTO.setEmail(IdUtil.fastSimpleUUID());
             userDTOSForUpdate.add(userDTO);
             if (i % 1000 == 0) {
-                userRepository.updateBatchReal(userDTOSForUpdate);
+                int countTemp = userRepository.updateBatch(userDTOSForUpdate, new UserQuery());
+                log.info("countTemp:{}", countTemp);
                 userDTOSForUpdate.clear();
             }
         }
-        userRepository.updateBatchReal(userDTOSForUpdate);
+        if (CollUtil.isNotEmpty(userDTOSForUpdate)) {
+            userRepository.updateBatch(userDTOSForUpdate, new UserQuery());
+        }
         log.info("批量写入结束-更新的数据量为{}", count);
         Long endTime = System.currentTimeMillis();
         log.info("所用时间为：{}ms", (endTime - startTime));

@@ -1,5 +1,7 @@
 package com.sika.code.demo.domain.business.user.repository.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.sika.code.demo.infrastructure.business.user.pojo.query.UserQuery;
 import com.sika.code.demo.infrastructure.db.business.user.po.UserPO;
 import com.sika.code.demo.infrastructure.db.business.user.mapper.UserMapper;
@@ -8,7 +10,9 @@ import com.sika.code.db.repository.impl.BaseRepositoryMyBatisPlusImpl;
 import org.springframework.stereotype.Repository;
 import cn.hutool.core.lang.Assert;
 
+import java.sql.Wrapper;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * <p>
@@ -40,7 +44,12 @@ public class UserRepositoryImpl extends BaseRepositoryMyBatisPlusImpl<UserPO, Lo
 
     @Override
     public int updateBatchReal(List<UserPO> list) {
-        return getMapper().batchUpdateCorporation(list);
+        List<Long> ids = list.stream().map(UserPO::getId).collect(Collectors.toList());
+        UpdateWrapper<UserQuery> updateWrapper = new UpdateWrapper<>();
+        updateWrapper.eq("id", 211091L);
+        updateWrapper.in("id", ids);
+        return getMapper().updateBatchCaseWhen(list, updateWrapper);
     }
+
 }
 

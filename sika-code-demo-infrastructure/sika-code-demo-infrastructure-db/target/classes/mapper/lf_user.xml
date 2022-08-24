@@ -119,8 +119,7 @@
 <!--            update_date = now()-->
 <!--            where id = #{item.id}-->
 <!--        </foreach>-->
-        UPDATE lf_user
-        SET
+        UPDATE lf_user SET
         address = CASE id
         <foreach collection="list" item="item" index="index">
             <choose>

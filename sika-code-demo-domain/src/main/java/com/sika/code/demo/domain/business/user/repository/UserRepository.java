@@ -1,10 +1,8 @@
 package com.sika.code.demo.domain.business.user.repository;
 
-import com.sika.code.core.base.repository.BaseRepository;
 import com.sika.code.demo.domain.common.base.repository.BaseDemoRepository;
 import com.sika.code.demo.infrastructure.business.user.pojo.query.UserQuery;
 import com.sika.code.demo.infrastructure.db.business.user.po.UserPO;
-import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 

@@ -18,16 +18,14 @@ public class UpdateBatchMethod extends AbstractMethod {
         StringBuilder sqlResult = new StringBuilder();
         StringBuilder updateTableBuilder = new StringBuilder();
         sqlResult.append("<script>\n");
-        updateTableBuilder.append("UPDATE").append(tableInfo.getTableName()).append("SET");
+        updateTableBuilder.append("UPDATE ").append(tableInfo.getTableName()).append(" SET ");
         // 构建caseWhen的语句
         StringBuilder caseWhenSqlBuild = buildCaseWhen(tableInfo);
         // 构建where的语句
         StringBuilder whereSqlBuilder = buildWhereSql(tableInfo);
         sqlResult.append(updateTableBuilder).append(caseWhenSqlBuild).append(whereSqlBuilder);
         sqlResult.append("</script>");
-        if (log.isDebugEnabled()) {
-            log.info("组装后的sql为:{}", sqlResult);
-        }
+        log.info("组装后的sql为:{}", sqlResult);
         SqlSource sqlSource = languageDriver.createSqlSource(configuration, sqlResult.toString(), modelClass);
         return this.addUpdateMappedStatement(mapperClass, modelClass, "updateBatchCaseWhen", sqlSource);
     }
@@ -48,10 +46,10 @@ public class UpdateBatchMethod extends AbstractMethod {
         int fieldSize = tableInfo.getFieldList().size();
         for (TableFieldInfo fieldInfo : tableInfo.getFieldList()) {
             count++;
-            caseWhenSqlBuild.append(fieldInfo.getColumn()).append("CASE ").append(tableInfo.getKeyColumn());
+            caseWhenSqlBuild.append(fieldInfo.getColumn()).append(" = CASE ").append(tableInfo.getKeyColumn()).append("\n");
             caseWhenSqlBuild.append("<foreach collection=\"list\" item=\"item\" index=\"index\">\n");
             caseWhenSqlBuild.append("<choose>\n");
-            caseWhenSqlBuild.append("<when test=\"item.").append(tableInfo.getKeyProperty()).append(" != null\">\n");
+            caseWhenSqlBuild.append("<when test=\"item.").append(fieldInfo.getProperty()).append(" != null\">\n");
             caseWhenSqlBuild.append("WHEN #{item.").append(tableInfo.getKeyProperty()).append("} THEN #{item.").append(fieldInfo.getProperty()).append("}");
             caseWhenSqlBuild.append("</when>\n");
             caseWhenSqlBuild.append("<otherwise>\n");
@@ -69,22 +67,23 @@ public class UpdateBatchMethod extends AbstractMethod {
         return caseWhenSqlBuild;
     }
 
-    /**  
+    /**
      * <p>
      * 构建where的批量更新
      * </p >
-     * @author sikadai
-     * @since 2022/8/24 18:43
+     *
      * @param tableInfo
      * @return java.lang.StringBuilder
-     */  
+     * @author sikadai
+     * @since 2022/8/24 18:43
+     */
     private StringBuilder buildWhereSql(TableInfo tableInfo) {
         StringBuilder whereSqlBuilder = new StringBuilder();
-        whereSqlBuilder.append("<where> ").append(tableInfo.getKeyColumn()).append(" IN\n");
-        whereSqlBuilder.append("<foreach collection=\"list\" item=\"item\" index=\"index\" open=\"(\" separator=\",\" close=\")\">\n");
-        whereSqlBuilder.append("#{item.}").append(tableInfo.getKeyProperty()).append("\n");
-        whereSqlBuilder.append("</foreach>");
-        whereSqlBuilder.append("</where>");
+//        whereSqlBuilder.append("WHERE ").append(tableInfo.getKeyColumn()).append(" IN\n");
+//        whereSqlBuilder.append("<foreach collection=\"list\" item=\"item\" index=\"index\" open=\"(\" separator=\",\" close=\")\">\n");
+//        whereSqlBuilder.append("#{item.").append(tableInfo.getKeyProperty()).append("}").append("\n");
+//        whereSqlBuilder.append("</foreach>");
+        whereSqlBuilder.append(sqlWhereEntityWrapper(true, tableInfo));
         return whereSqlBuilder;
     }
 }

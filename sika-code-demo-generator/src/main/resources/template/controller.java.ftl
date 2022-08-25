@@ -8,7 +8,7 @@ import ${sikaPackage.Query}.${sikaEntityBodyName}Query;
 import ${sikaPackage.DTO}.${sikaEntityBodyName}DTO;
 
 import ${sikaPackage.Service}.${sikaEntityBodyName}Service;
-import com.sika.code.demo.interfaces.common.controller.BaseLiteflowServerController;
+import com.sika.code.demo.interfaces.common.controller.BaseSikaCodeDemoController;
 import javax.annotation.Resource;
 import org.springframework.web.bind.annotation.RequestBody;
 import java.util.List;
@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("${sikaEntityBodyName?uncap_first}")
-public class ${entity} extends BaseLiteflowServerController {
+public class ${entity} extends BaseSikaCodeDemoController {
 
     @Resource
     private ${sikaEntityBodyName}Service ${sikaEntityBodyName?uncap_first}Service;

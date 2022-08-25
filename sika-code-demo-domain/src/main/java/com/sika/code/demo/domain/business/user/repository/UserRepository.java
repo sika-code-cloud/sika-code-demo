@@ -2,6 +2,7 @@ package com.sika.code.demo.domain.business.user.repository;
 
 import com.sika.code.demo.domain.common.base.repository.BaseDemoRepository;
 import com.sika.code.demo.infrastructure.business.user.pojo.query.UserQuery;
+import com.sika.code.demo.infrastructure.db.business.user.mapper.UserMapper;
 import com.sika.code.demo.infrastructure.db.business.user.po.UserPO;
 
 import java.util.List;
@@ -14,7 +15,7 @@ import java.util.List;
  * @author sikadai
  * @since 2022-07-30 12:59:41
  */
-public interface UserRepository extends BaseDemoRepository<UserPO> {
+public interface UserRepository extends BaseDemoRepository<UserPO, UserMapper> {
     /**
      * 校验ID对应的协作器是否不存在-不存在抛出异常
      *

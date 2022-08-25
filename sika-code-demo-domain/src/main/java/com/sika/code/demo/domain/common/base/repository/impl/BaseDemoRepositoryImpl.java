@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * 基础示例仓储实现
  */
-public class BaseDemoRepositoryImpl<PO extends BaseDemoPO, Mapper extends BaseDemoMapper<PO>> extends BaseRepositoryMyBatisPlusImpl<PO, Long, Mapper> implements BaseDemoRepository<PO> {
+public class BaseDemoRepositoryImpl<PO extends BaseDemoPO, Mapper extends BaseDemoMapper<PO>> extends BaseRepositoryMyBatisPlusImpl<PO, Long, Mapper> implements BaseDemoRepository<PO, Mapper> {
 
     @Override
     public int insertBatch(List<PO> pos) {

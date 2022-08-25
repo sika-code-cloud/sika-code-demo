@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.toolkit.Constants;
 import com.sika.code.demo.infrastructure.business.user.pojo.query.UserQuery;
 import com.sika.code.demo.infrastructure.db.business.user.po.UserPO;
 import com.sika.code.db.mapper.BaseMapper;
+import com.sika.code.demo.infrastructure.db.common.mapper.BaseDemoMapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -17,7 +18,7 @@ import java.util.List;
  * @author sikadai
  * @since 2022-07-30 12:59:38
  */
-public interface UserMapper extends BaseMapper<UserPO, Long> {
+public interface UserMapper extends BaseDemoMapper<UserPO> {
     List<UserPO> listAsc(@Param(value = "query") UserQuery query);
 
     /**
@@ -30,5 +31,5 @@ public interface UserMapper extends BaseMapper<UserPO, Long> {
      * 自定义批量更新，条件为主键
      * 如果要自动填充，@Param(xx) xx参数名必须是 list/collection/array 3个的其中之一
      */
-    int batchUpdateCorporation(@Param("list") List<UserPO> list );
+    int batchUpdateCorporation(@Param("list") List<UserPO> list);
 }

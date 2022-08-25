@@ -10,7 +10,7 @@ public class GeneratorApplication {
     public static void main(String[] args) {
         GeneratorClientDTO clientDTO = new GeneratorClientDTO();
         clientDTO.setAuthor("sikadai");
-        clientDTO.setTableNames(Lists.newArrayList("lf_chain"));
+        clientDTO.setTableNames(Lists.newArrayList("lf_test_temp"));
 
         generate(clientDTO);
     }

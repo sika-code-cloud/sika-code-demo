@@ -84,7 +84,6 @@ public class TestUserRepository extends BaseTestRepository {
         log.info("批量写入开始");
         int count = 0;
         for (int i = 0; i < userDTOS.size(); ++i) {
-            count++;
             UserPO userDTO = buildUserPO();
             userDTO.setId(userDTOS.get(i).getId());
             userDTO.setAddress(IdUtil.simpleUUID());
@@ -92,15 +91,8 @@ public class TestUserRepository extends BaseTestRepository {
             userDTO.setNickname(IdUtil.objectId());
             userDTO.setEmail(IdUtil.fastSimpleUUID());
             userDTOSForUpdate.add(userDTO);
-            if (i % 1000 == 0) {
-                int countTemp = userRepository.updateBatch(userDTOSForUpdate, new UserQuery());
-                log.info("countTemp:{}", countTemp);
-                userDTOSForUpdate.clear();
-            }
         }
-        if (CollUtil.isNotEmpty(userDTOSForUpdate)) {
-            userRepository.updateBatch(userDTOSForUpdate, new UserQuery());
-        }
+        count += userRepository.updateBatch(userDTOSForUpdate, new UserQuery());
         log.info("批量写入结束-更新的数据量为{}", count);
         Long endTime = System.currentTimeMillis();
         log.info("所用时间为：{}ms", (endTime - startTime));

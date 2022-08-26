@@ -5,7 +5,7 @@
     <parent>
         <artifactId>sika-code-demo</artifactId>
         <groupId>com.sika.code.demo</groupId>
-        <version>3.0.0-SNAPSHOT</version>
+        <version>${revision}</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -14,7 +14,7 @@
         <dependency>
             <groupId>com.sika.code.demo</groupId>
             <artifactId>sika-code-demo-domain</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>${revision}</version>
         </dependency>
     </dependencies>
 

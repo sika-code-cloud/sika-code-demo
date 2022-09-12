@@ -59,7 +59,7 @@ public class TestNodeRepository extends BaseTestRepository {
     @Test
     public void testInsertBatchSelective() {
         List<NodePO> pos = Lists.newArrayList();
-        for (int i = 0; i < 200000; ++i) {
+        for (int i = 0; i < 20000; ++i) {
             NodePO nodePO = buildNodePO();
             nodePO.setNodeName("nodeName-" + IdUtil.objectId());
             nodePO.setNodeNo(IdUtil.objectId());

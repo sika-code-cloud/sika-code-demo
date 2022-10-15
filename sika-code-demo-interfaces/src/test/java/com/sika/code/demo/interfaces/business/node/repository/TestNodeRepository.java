@@ -3,6 +3,7 @@ package com.sika.code.demo.interfaces.business.node.repository;
 
 import com.sika.code.core.base.test.BaseTestRepository;
 import com.google.common.collect.Lists;
+import com.sika.code.core.util.IdUtil;
 import com.sika.code.demo.domain.business.node.repository.NodeRepository;
 import com.sika.code.demo.infrastructure.db.business.node.po.NodePO;
 import com.sika.code.demo.infrastructure.business.node.pojo.query.NodeQuery;
@@ -58,8 +59,11 @@ public class TestNodeRepository extends BaseTestRepository {
     @Test
     public void testInsertBatchSelective() {
         List<NodePO> pos = Lists.newArrayList();
-        for (int i = 0; i < 10; ++i) {
+        for (int i = 0; i < 20000; ++i) {
             NodePO nodePO = buildNodePO();
+            nodePO.setNodeName("nodeName-" + IdUtil.objectId());
+            nodePO.setNodeNo(IdUtil.objectId());
+            nodePO.setTenantId(10001L);
             pos.add(nodePO);
         }
         int count = nodeRepository.saveBatch(pos);

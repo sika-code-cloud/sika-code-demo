@@ -1,6 +1,6 @@
 package com.sika.code.demo.infrastructure.db.business.chain.po;
 
-import com.sika.code.demo.infrastructure.db.common.po.BaseDemoPO;
+import com.sika.code.demo.infrastructure.db.common.po.BaseBizPO;
 import lombok.Getter;
 import lombok.Setter;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -15,7 +15,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 @Getter
 @Setter
 @TableName("lf_chain")
-public class ChainPO extends BaseDemoPO {
+public class ChainPO extends BaseBizPO {
     private static final long serialVersionUID = 1L;
     /**
      * 创建人标识

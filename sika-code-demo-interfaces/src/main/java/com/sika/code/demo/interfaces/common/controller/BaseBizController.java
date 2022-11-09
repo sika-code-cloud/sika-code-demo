@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.Map;
 
-public class BaseSikaCodeDemoController extends BaseController {
+public class BaseBizController extends BaseController {
 
     @Autowired
     protected HttpServletRequest request;

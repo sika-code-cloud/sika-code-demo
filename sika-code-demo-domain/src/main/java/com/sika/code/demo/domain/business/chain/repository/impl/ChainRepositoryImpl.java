@@ -3,9 +3,8 @@ package com.sika.code.demo.domain.business.chain.repository.impl;
 import com.sika.code.demo.infrastructure.db.business.chain.po.ChainPO;
 import com.sika.code.demo.infrastructure.db.business.chain.mapper.ChainMapper;
 import com.sika.code.demo.domain.business.chain.repository.ChainRepository;
-import  com.sika.code.demo.domain.common.base.repository.impl.BaseDemoRepositoryImpl;
+import com.sika.code.demo.domain.common.base.repository.impl.BaseBizRepositoryImpl;
 import org.springframework.stereotype.Repository;
-import cn.hutool.core.lang.Assert;
 
 /**
  * <p>
@@ -16,7 +15,7 @@ import cn.hutool.core.lang.Assert;
  * @since 2022-08-19 00:12:15
  */
 @Repository
-public class ChainRepositoryImpl extends BaseDemoRepositoryImpl<ChainPO, ChainMapper> implements ChainRepository {
+public class ChainRepositoryImpl extends BaseBizRepositoryImpl<ChainPO, ChainMapper> implements ChainRepository {
 
 }
 

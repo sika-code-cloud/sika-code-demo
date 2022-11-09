@@ -1,6 +1,6 @@
 package ${package.Entity};
 
-import com.sika.code.demo.infrastructure.common.pojo.dto.BaseDemoDTO;
+import com.sika.code.demo.infrastructure.common.pojo.dto.BaseBizDTO;
 <#if swagger>
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -26,7 +26,7 @@ import ${pkg};
 <#if swagger>
 @ApiModel(value = "${entity}对象", description = "${table.comment!}数据传输类")
 </#if>
-public class ${entity} extends BaseDemoDTO {
+public class ${entity} extends BaseBizDTO {
     private static final long serialVersionUID = 1L;
     <#-- ----------  BEGIN 字段循环遍历  ---------->
 <#list table.fields as field>

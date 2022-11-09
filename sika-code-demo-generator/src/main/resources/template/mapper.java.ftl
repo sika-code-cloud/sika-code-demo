@@ -1,7 +1,7 @@
 package ${package.Entity};
 
 import ${sikaPackage.Entity}.${sikaEntityBodyName}PO;
-import com.sika.code.demo.infrastructure.db.common.mapper.BaseDemoMapper;
+import com.sika.code.demo.infrastructure.db.common.mapper.BaseBizMapper;
 
 /**
  * <p>
@@ -11,6 +11,6 @@ import com.sika.code.demo.infrastructure.db.common.mapper.BaseDemoMapper;
  * @author ${author}
  * @since ${date}
  */
-public interface ${entity} extends BaseDemoMapper<${sikaEntityBodyName}PO> {
+public interface ${entity} extends BaseBizMapper<${sikaEntityBodyName}PO> {
 
 }

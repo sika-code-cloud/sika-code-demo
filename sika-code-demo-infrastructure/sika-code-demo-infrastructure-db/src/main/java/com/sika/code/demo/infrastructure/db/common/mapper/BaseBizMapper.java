@@ -12,5 +12,5 @@ import com.sika.code.db.mapper.BaseMapper;
  * @version 1.0
  * @since 2022/8/11 11:25
  */
-public interface BaseDemoMapper<PO extends BasePO<Long>> extends BaseMapper<PO, Long> {
+public interface BaseBizMapper<PO extends BasePO<Long>> extends BaseMapper<PO, Long> {
 }

@@ -4,7 +4,7 @@ import ${sikaPackage.DTO}.${sikaEntityBodyName}DTO;
 import ${sikaPackage.PO}.${sikaEntityBodyName}PO;
 import ${sikaPackage.Repository}.${sikaEntityBodyName}Repository;
 import ${sikaPackage.Service}.${sikaEntityBodyName}Service;
-import  com.sika.code.demo.domain.common.base.service.impl.BaseDemoServiceImpl;
+import  com.sika.code.demo.domain.common.base.service.impl.BaseBizServiceImpl;
 import org.springframework.stereotype.Service;
 
 /**
@@ -16,6 +16,6 @@ import org.springframework.stereotype.Service;
  * @since ${date}
  */
 @Service
-public class ${entity} extends BaseDemoServiceImpl${r"<"}${sikaEntityBodyName}PO, ${sikaEntityBodyName}DTO, ${sikaEntityBodyName}Repository> implements ${sikaEntityBodyName}Service {
+public class ${entity} extends BaseBizServiceImpl${r"<"}${sikaEntityBodyName}PO, ${sikaEntityBodyName}DTO, ${sikaEntityBodyName}Repository> implements ${sikaEntityBodyName}Service {
 
 }

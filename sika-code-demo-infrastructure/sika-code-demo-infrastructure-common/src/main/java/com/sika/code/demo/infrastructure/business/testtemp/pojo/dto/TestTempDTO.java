@@ -1,6 +1,6 @@
 package com.sika.code.demo.infrastructure.business.testtemp.pojo.dto;
 
-import com.sika.code.demo.infrastructure.common.pojo.dto.BaseDemoDTO;
+import com.sika.code.demo.infrastructure.common.pojo.dto.BaseBizDTO;
 import lombok.Getter;
 import lombok.Setter;
 import java.time.LocalDate;
@@ -15,7 +15,7 @@ import java.time.LocalDate;
  */
 @Getter
 @Setter
-public class TestTempDTO extends BaseDemoDTO {
+public class TestTempDTO extends BaseBizDTO {
     private static final long serialVersionUID = 1L;
     /**
      * 创建人标识

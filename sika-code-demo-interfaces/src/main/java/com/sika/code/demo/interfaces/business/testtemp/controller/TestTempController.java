@@ -1,7 +1,7 @@
 package com.sika.code.demo.interfaces.business.testtemp.controller;
 
 
-import com.sika.code.demo.interfaces.common.controller.BaseSikaCodeDemoController;
+import com.sika.code.demo.interfaces.common.controller.BaseBizController;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sika.code.core.result.Result;
@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("testTemp")
-public class TestTempController extends BaseSikaCodeDemoController {
+public class TestTempController extends BaseBizController {
 
     @Resource
     private TestTempService testTempService;

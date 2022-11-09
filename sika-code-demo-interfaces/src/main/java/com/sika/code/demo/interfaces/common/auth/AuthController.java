@@ -5,7 +5,7 @@ import cn.dev33.satoken.stp.StpUtil;
 import com.alibaba.fastjson.JSON;
 import com.sika.code.core.result.Result;
 import com.sika.code.demo.infrastructure.db.business.user.po.UserPO;
-import com.sika.code.demo.interfaces.common.controller.BaseSikaCodeDemoController;
+import com.sika.code.demo.interfaces.common.controller.BaseBizController;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,7 +23,7 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping(value = "/auth")
-public class AuthController extends BaseSikaCodeDemoController {
+public class AuthController extends BaseBizController {
 
 
     @RequestMapping(value = "list1")

@@ -1,6 +1,6 @@
 package ${package.Entity};
 
-import com.sika.code.demo.infrastructure.db.common.po.BaseDemoPO;
+import com.sika.code.demo.infrastructure.db.common.po.BaseBizPO;
 import lombok.Getter;
 import lombok.Setter;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -15,7 +15,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 @Getter
 @Setter
 @TableName("${table.name}")
-public class ${entity} extends BaseDemoPO {
+public class ${entity} extends BaseBizPO {
     private static final long serialVersionUID = 1L;
     <#-- ----------  BEGIN 字段循环遍历  ---------->
 <#list table.fields as field>

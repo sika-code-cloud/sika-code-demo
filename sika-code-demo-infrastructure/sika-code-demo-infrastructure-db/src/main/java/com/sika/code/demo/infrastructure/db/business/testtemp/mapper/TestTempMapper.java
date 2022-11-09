@@ -1,7 +1,7 @@
 package com.sika.code.demo.infrastructure.db.business.testtemp.mapper;
 
 import com.sika.code.demo.infrastructure.db.business.testtemp.po.TestTempPO;
-import com.sika.code.demo.infrastructure.db.common.mapper.BaseDemoMapper;
+import com.sika.code.demo.infrastructure.db.common.mapper.BaseBizMapper;
 
 /**
  * <p>
@@ -11,6 +11,6 @@ import com.sika.code.demo.infrastructure.db.common.mapper.BaseDemoMapper;
  * @author sikadai
  * @since 2022-08-25 23:29:39
  */
-public interface TestTempMapper extends BaseDemoMapper<TestTempPO> {
+public interface TestTempMapper extends BaseBizMapper<TestTempPO> {
 
 }

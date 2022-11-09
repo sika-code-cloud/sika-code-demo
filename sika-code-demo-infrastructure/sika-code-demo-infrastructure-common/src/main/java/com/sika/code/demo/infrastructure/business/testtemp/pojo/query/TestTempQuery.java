@@ -1,6 +1,6 @@
 package com.sika.code.demo.infrastructure.business.testtemp.pojo.query;
 
-import com.sika.code.demo.infrastructure.common.pojo.query.BaseDemoQuery;
+import com.sika.code.demo.infrastructure.common.pojo.query.BaseBizQuery;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,7 +17,7 @@ import java.util.List;
  */
 @Getter
 @Setter
-public class TestTempQuery extends BaseDemoQuery {
+public class TestTempQuery extends BaseBizQuery {
     private static final long serialVersionUID = 1L;
     /**
      * 创建人标识

@@ -1,7 +1,7 @@
 package com.sika.code.demo.application.business.chain.service;
 
 import com.sika.code.demo.infrastructure.business.chain.pojo.dto.ChainDTO;
-import com.sika.code.demo.domain.common.base.service.BaseDemoService;
+import com.sika.code.demo.domain.common.base.service.BaseBizService;
 
 /**
  * <p>
@@ -11,6 +11,6 @@ import com.sika.code.demo.domain.common.base.service.BaseDemoService;
  * @author sikadai
  * @since 2022-08-19 00:12:18
  */
-public interface ChainService extends BaseDemoService<ChainDTO> {
+public interface ChainService extends BaseBizService<ChainDTO> {
 
 }

@@ -15,5 +15,5 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public abstract class BaseDemoPO extends BasePoNone<Long> {
+public abstract class BaseBizPO extends BasePoNone<Long> {
 }

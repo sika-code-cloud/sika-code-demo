@@ -2,7 +2,7 @@ package com.sika.code.demo.domain.business.testtemp.repository;
 
 import com.sika.code.demo.infrastructure.db.business.testtemp.po.TestTempPO;
 import com.sika.code.demo.infrastructure.db.business.testtemp.mapper.TestTempMapper;
-import com.sika.code.demo.domain.common.base.repository.BaseDemoRepository;
+import com.sika.code.demo.domain.common.base.repository.BaseBizRepository;
 
 /**
  * <p>
@@ -12,6 +12,6 @@ import com.sika.code.demo.domain.common.base.repository.BaseDemoRepository;
  * @author sikadai
  * @since 2022-08-25 23:29:40
  */
-public interface TestTempRepository extends BaseDemoRepository<TestTempPO, TestTempMapper> {
+public interface TestTempRepository extends BaseBizRepository<TestTempPO, TestTempMapper> {
 
 }

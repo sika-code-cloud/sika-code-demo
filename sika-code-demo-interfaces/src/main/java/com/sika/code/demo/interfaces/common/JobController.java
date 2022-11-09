@@ -4,7 +4,7 @@ import com.sika.code.batch.standard.bean.common.BatchBean;
 import com.sika.code.batch.standard.context.StandardContext;
 import com.sika.code.batch.standard.entity.StandardBatchEntity;
 import com.sika.code.core.result.Result;
-import com.sika.code.demo.interfaces.common.controller.BaseSikaCodeDemoController;
+import com.sika.code.demo.interfaces.common.controller.BaseBizController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,7 +26,7 @@ import java.io.IOException;
  * @since 2022/6/3 10:18
  */
 @RestController
-public class JobController extends BaseSikaCodeDemoController {
+public class JobController extends BaseBizController {
     @Autowired
     protected StandardBatchEntity standardEntity;
 

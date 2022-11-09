@@ -1,6 +1,6 @@
 package com.sika.code.demo.infrastructure.business.chain.pojo.dto;
 
-import com.sika.code.demo.infrastructure.common.pojo.dto.BaseDemoDTO;
+import com.sika.code.demo.infrastructure.common.pojo.dto.BaseBizDTO;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,7 +14,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class ChainDTO extends BaseDemoDTO {
+public class ChainDTO extends BaseBizDTO {
     private static final long serialVersionUID = 1L;
     /**
      * 创建人标识

@@ -6,5 +6,5 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public abstract class BaseDemoDTO extends BaseDTO<Long> {
+public abstract class BaseBizDTO extends BaseDTO<Long> {
 }

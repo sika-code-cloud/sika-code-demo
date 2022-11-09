@@ -1,7 +1,7 @@
 package com.sika.code.demo.application.business.testtemp.service;
 
 import com.sika.code.demo.infrastructure.business.testtemp.pojo.dto.TestTempDTO;
-import com.sika.code.demo.domain.common.base.service.BaseDemoService;
+import com.sika.code.demo.domain.common.base.service.BaseBizService;
 
 /**
  * <p>
@@ -11,6 +11,6 @@ import com.sika.code.demo.domain.common.base.service.BaseDemoService;
  * @author sikadai
  * @since 2022-08-25 23:29:44
  */
-public interface TestTempService extends BaseDemoService<TestTempDTO> {
+public interface TestTempService extends BaseBizService<TestTempDTO> {
 
 }

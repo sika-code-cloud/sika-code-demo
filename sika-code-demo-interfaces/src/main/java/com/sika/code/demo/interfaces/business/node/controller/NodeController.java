@@ -8,7 +8,7 @@ import com.sika.code.demo.infrastructure.business.node.pojo.query.NodeQuery;
 import com.sika.code.demo.infrastructure.business.node.pojo.dto.NodeDTO;
 
 import com.sika.code.demo.application.business.node.service.NodeService;
-import com.sika.code.demo.interfaces.common.controller.BaseSikaCodeDemoController;
+import com.sika.code.demo.interfaces.common.controller.BaseBizController;
 import javax.annotation.Resource;
 import org.springframework.web.bind.annotation.RequestBody;
 import java.util.List;
@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("node")
-public class NodeController extends BaseSikaCodeDemoController {
+public class NodeController extends BaseBizController {
 
     @Resource
     private NodeService nodeService;

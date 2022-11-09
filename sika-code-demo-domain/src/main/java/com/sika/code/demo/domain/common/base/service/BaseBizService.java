@@ -1,7 +1,7 @@
 package com.sika.code.demo.domain.common.base.service;
 
 import com.sika.code.core.base.service.BaseService;
-import com.sika.code.demo.infrastructure.common.pojo.dto.BaseDemoDTO;
+import com.sika.code.demo.infrastructure.common.pojo.dto.BaseBizDTO;
 
 /**
  * <pre>
@@ -12,6 +12,6 @@ import com.sika.code.demo.infrastructure.common.pojo.dto.BaseDemoDTO;
  * @version 1.0
  * @since 2022/8/10 10:47
  */
-public interface BaseDemoService<DTO extends BaseDemoDTO> extends BaseService<Long, DTO> {
+public interface BaseBizService<DTO extends BaseBizDTO> extends BaseService<Long, DTO> {
 
 }

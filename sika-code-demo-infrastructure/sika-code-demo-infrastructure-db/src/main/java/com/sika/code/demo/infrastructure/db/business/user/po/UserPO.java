@@ -1,8 +1,7 @@
 package com.sika.code.demo.infrastructure.db.business.user.po;
 
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.sika.code.db.po.BasePoAuto;
-import com.sika.code.demo.infrastructure.db.common.po.BaseDemoPO;
+import com.sika.code.demo.infrastructure.db.common.po.BaseBizPO;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,7 +16,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @TableName("lf_user")
-public class UserPO extends BaseDemoPO {
+public class UserPO extends BaseBizPO {
     private static final long serialVersionUID = 1L;
     /**
      * 创建人标识

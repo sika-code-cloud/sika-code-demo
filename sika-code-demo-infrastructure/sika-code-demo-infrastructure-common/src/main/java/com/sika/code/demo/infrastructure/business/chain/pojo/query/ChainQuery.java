@@ -1,6 +1,6 @@
 package com.sika.code.demo.infrastructure.business.chain.pojo.query;
 
-import com.sika.code.demo.infrastructure.common.pojo.query.BaseDemoQuery;
+import com.sika.code.demo.infrastructure.common.pojo.query.BaseBizQuery;
 import lombok.Getter;
 import lombok.Setter;
 import java.util.List;
@@ -15,7 +15,7 @@ import java.util.List;
  */
 @Getter
 @Setter
-public class ChainQuery extends BaseDemoQuery {
+public class ChainQuery extends BaseBizQuery {
     private static final long serialVersionUID = 1L;
     /**
      * 创建人标识

@@ -1,7 +1,7 @@
 package com.sika.code.demo.infrastructure.db.business.chain.mapper;
 
 import com.sika.code.demo.infrastructure.db.business.chain.po.ChainPO;
-import com.sika.code.demo.infrastructure.db.common.mapper.BaseDemoMapper;
+import com.sika.code.demo.infrastructure.db.common.mapper.BaseBizMapper;
 
 /**
  * <p>
@@ -11,6 +11,6 @@ import com.sika.code.demo.infrastructure.db.common.mapper.BaseDemoMapper;
  * @author sikadai
  * @since 2022-08-19 00:12:13
  */
-public interface ChainMapper extends BaseDemoMapper<ChainPO> {
+public interface ChainMapper extends BaseBizMapper<ChainPO> {
 
 }

@@ -1,7 +1,7 @@
 package ${package.Entity};
 
 import ${sikaPackage.DTO}.${sikaEntityBodyName}DTO;
-import com.sika.code.demo.domain.common.base.service.BaseDemoService;
+import com.sika.code.demo.domain.common.base.service.BaseBizService;
 
 /**
  * <p>
@@ -11,6 +11,6 @@ import com.sika.code.demo.domain.common.base.service.BaseDemoService;
  * @author ${author}
  * @since ${date}
  */
-public interface ${entity} extends BaseDemoService<${sikaEntityBodyName}DTO> {
+public interface ${entity} extends BaseBizService<${sikaEntityBodyName}DTO> {
 
 }

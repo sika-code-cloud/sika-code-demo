@@ -6,5 +6,5 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public abstract class BaseDemoQuery extends PageQuery<Long> {
+public abstract class BaseBizQuery extends PageQuery<Long> {
 }

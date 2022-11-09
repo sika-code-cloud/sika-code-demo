@@ -1,6 +1,6 @@
 package ${package.Entity};
 
-import com.sika.code.demo.infrastructure.common.pojo.query.BaseDemoQuery;
+import com.sika.code.demo.infrastructure.common.pojo.query.BaseBizQuery;
 import lombok.Getter;
 import lombok.Setter;
 import java.util.List;
@@ -15,7 +15,7 @@ import java.util.List;
  */
 @Getter
 @Setter
-public class ${entity} extends BaseDemoQuery {
+public class ${entity} extends BaseBizQuery {
     private static final long serialVersionUID = 1L;
     <#-- ----------  BEGIN 字段循环遍历  ---------->
 <#list table.fields as field>

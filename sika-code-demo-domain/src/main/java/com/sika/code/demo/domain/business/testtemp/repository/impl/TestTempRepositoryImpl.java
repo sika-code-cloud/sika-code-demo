@@ -3,9 +3,8 @@ package com.sika.code.demo.domain.business.testtemp.repository.impl;
 import com.sika.code.demo.infrastructure.db.business.testtemp.po.TestTempPO;
 import com.sika.code.demo.infrastructure.db.business.testtemp.mapper.TestTempMapper;
 import com.sika.code.demo.domain.business.testtemp.repository.TestTempRepository;
-import  com.sika.code.demo.domain.common.base.repository.impl.BaseDemoRepositoryImpl;
+import com.sika.code.demo.domain.common.base.repository.impl.BaseBizRepositoryImpl;
 import org.springframework.stereotype.Repository;
-import cn.hutool.core.lang.Assert;
 
 /**
  * <p>
@@ -16,7 +15,7 @@ import cn.hutool.core.lang.Assert;
  * @since 2022-08-25 23:29:41
  */
 @Repository
-public class TestTempRepositoryImpl extends BaseDemoRepositoryImpl<TestTempPO, TestTempMapper> implements TestTempRepository {
+public class TestTempRepositoryImpl extends BaseBizRepositoryImpl<TestTempPO, TestTempMapper> implements TestTempRepository {
 
 }
 

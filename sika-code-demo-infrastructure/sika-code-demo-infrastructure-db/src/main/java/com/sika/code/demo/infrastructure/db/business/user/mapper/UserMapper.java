@@ -1,11 +1,8 @@
 package com.sika.code.demo.infrastructure.db.business.user.mapper;
 
-import com.baomidou.mybatisplus.core.conditions.Wrapper;
-import com.baomidou.mybatisplus.core.toolkit.Constants;
 import com.sika.code.demo.infrastructure.business.user.pojo.query.UserQuery;
 import com.sika.code.demo.infrastructure.db.business.user.po.UserPO;
-import com.sika.code.db.mapper.BaseMapper;
-import com.sika.code.demo.infrastructure.db.common.mapper.BaseDemoMapper;
+import com.sika.code.demo.infrastructure.db.common.mapper.BaseBizMapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -18,7 +15,7 @@ import java.util.List;
  * @author sikadai
  * @since 2022-07-30 12:59:38
  */
-public interface UserMapper extends BaseDemoMapper<UserPO> {
+public interface UserMapper extends BaseBizMapper<UserPO> {
     List<UserPO> listAsc(@Param(value = "query") UserQuery query);
 
     /**

@@ -3,7 +3,7 @@ package com.sika.code.demo.interfaces.common.dao;
 import cn.dev33.satoken.dao.SaTokenDao;
 import cn.dev33.satoken.session.SaSession;
 import cn.dev33.satoken.util.SaFoxUtil;
-import com.alibaba.fastjson.JSON;
+import com.sika.code.core.base.util.JSONUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -145,7 +145,7 @@ public class SaTokenDaoRedis implements SaTokenDao {
 		if (obj == null) {
 			return null;
 		}
-		return JSON.parseObject(obj.toString(), SaSessionCustomer.class);
+		return JSONUtil.parseObject(obj.toString(), SaSessionCustomer.class);
 	}
 
 	/**
@@ -164,7 +164,7 @@ public class SaTokenDaoRedis implements SaTokenDao {
 		if(timeout == 0 || timeout <= SaTokenDao.NOT_VALUE_EXPIRE)  {
 			return;
 		}
-		String toValue = JSON.toJSONString(object);
+		String toValue = JSONUtil.toJSONString(object);
 		// 判断是否为永不过期 
 		if(timeout == SaTokenDao.NEVER_EXPIRE) {
 			objectRedisTemplate.opsForValue().set(key, toValue);

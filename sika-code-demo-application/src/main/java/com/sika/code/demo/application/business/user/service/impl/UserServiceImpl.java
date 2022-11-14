@@ -1,6 +1,6 @@
 package com.sika.code.demo.application.business.user.service.impl;
 
-import com.alibaba.fastjson.JSON;
+import com.sika.code.core.base.util.JSONUtil;
 import com.sika.code.demo.infrastructure.business.user.pojo.dto.UserDTO;
 import com.sika.code.demo.infrastructure.business.user.pojo.query.UserQuery;
 import com.sika.code.demo.infrastructure.db.business.user.po.UserPO;
@@ -38,7 +38,7 @@ public class UserServiceImpl extends BaseServiceImpl<Long, UserPO, UserDTO, User
 
     @Override
     public List<UserDTO> readData(UserQuery query) {
-        log.info("执行查询：{}", JSON.toJSONString(query));
+        log.info("执行查询：{}", JSONUtil.toJSONString(query));
         List<UserDTO> userDTOSRet = Lists.newArrayList();
         Long start = query.getStartIndex() + 1;
         int count = 0;
@@ -59,6 +59,6 @@ public class UserServiceImpl extends BaseServiceImpl<Long, UserPO, UserDTO, User
 
     @Override
     public void writeData(List<UserDTO> dtos) {
-        log.info("执行写入测试---{}", JSON.toJSONString(dtos));
+        log.info("执行写入测试---{}", JSONUtil.toJSONString(dtos));
     }
 }

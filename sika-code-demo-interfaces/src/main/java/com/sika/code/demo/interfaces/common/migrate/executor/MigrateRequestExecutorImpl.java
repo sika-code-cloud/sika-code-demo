@@ -2,11 +2,11 @@ package com.sika.code.demo.interfaces.common.migrate.executor;
 
 import cn.hutool.core.io.IoUtil;
 import cn.hutool.core.util.BooleanUtil;
-import com.alibaba.fastjson.JSON;
 import com.dtflys.forest.http.ForestRequest;
 import com.dtflys.forest.http.ForestResponse;
 import com.google.common.collect.Maps;
 import com.sika.code.core.base.constant.BaseTypeEnum;
+import com.sika.code.core.base.util.JSONUtil;
 import com.sika.code.migrate.builder.MigrateForestRequestBuilder;
 import com.sika.code.migrate.builder.MigrateRequestRuleBuilder;
 import com.sika.code.migrate.constant.MigrateTypeEnum;
@@ -42,10 +42,10 @@ public class MigrateRequestExecutorImpl implements MigrateRequestExecutor {
     public boolean execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
         // 构建规则请求对象
         MigrateRuleRequest ruleRequest = new MigrateRequestRuleBuilder(request, response).build();
-        log.info("迁移规则请求类：{}", JSON.toJSONString(ruleRequest));
+        log.info("迁移规则请求类：{}", JSONUtil.toJSONString(ruleRequest));
         // 通过迁移规则-获取迁移规则响应
         MigrateRuleResponse ruleResponse = migrateRule.match(ruleRequest);
-        log.info("迁移规则响应类：{}", JSON.toJSONString(ruleResponse));
+        log.info("迁移规则响应类：{}", JSONUtil.toJSONString(ruleResponse));
         // 切换规则没有匹配-则当前请求不需要执行迁移
         if (ruleResponse == null || BooleanUtil.isFalse(ruleResponse.getMatch())) {
             return true;
@@ -72,12 +72,12 @@ public class MigrateRequestExecutorImpl implements MigrateRequestExecutor {
 
 
     protected void logResponse(HttpServletResponse response) {
-        log.info("response.getHeader:{}", JSON.toJSONString(response.getHeaderNames()));
+        log.info("response.getHeader:{}", JSONUtil.toJSONString(response.getHeaderNames()));
         Map<String, String> heads = Maps.newHashMap();
         for (String headerName : response.getHeaderNames()) {
             heads.put(headerName, response.getHeader(headerName));
         }
-        log.info("response.getHeaderValue:{}", JSON.toJSONString(heads));
+        log.info("response.getHeaderValue:{}", JSONUtil.toJSONString(heads));
     }
 
     // 流量双写逻辑
@@ -99,8 +99,8 @@ public class MigrateRequestExecutorImpl implements MigrateRequestExecutor {
 
 
     protected void buildResponse(ForestResponse<?> forestResponse, HttpServletResponse response) {
-        log.info("forestResponse:{}", JSON.toJSONString(forestResponse.getHeaders()));
-        log.info("forestResponse.getResult:{}", JSON.toJSONString(forestResponse.getResult()));
+        log.info("forestResponse:{}", JSONUtil.toJSONString(forestResponse.getHeaders()));
+        log.info("forestResponse.getResult:{}", JSONUtil.toJSONString(forestResponse.getResult()));
         for (Map.Entry<String, String> header : forestResponse.getHeaders().entrySet()) {
             response.setHeader(header.getKey(), header.getValue());
         }

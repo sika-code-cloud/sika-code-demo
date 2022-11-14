@@ -1,9 +1,9 @@
 package com.sika.code.demo.interfaces.common.migrate.executor;
 
 import cn.hutool.core.util.BooleanUtil;
-import com.alibaba.fastjson.JSON;
 import com.dtflys.forest.Forest;
 import com.google.common.collect.Maps;
+import com.sika.code.core.base.util.JSONUtil;
 import com.sika.code.migrate.constant.MigrateTypeEnum;
 import com.sika.code.migrate.executor.MigrateResultExecutor;
 import com.sika.code.migrate.pojo.MigrateResultDTO;
@@ -32,7 +32,7 @@ public class MigrateResultExecutorImpl implements MigrateResultExecutor {
     public void execute(MigrateRuleResult ruleResult) {
         MigrateRuleResponse ruleResponse = (MigrateRuleResponse) SpringMVCUtil.getRequest().getAttribute("migrateRuleResponse");
         if (needWriteResult(ruleResponse)) {
-            log.info("获取{}", JSON.toJSONString(ruleResult.getResult()));
+            log.info("获取{}", JSONUtil.toJSONString(ruleResult.getResult()));
             // 异步发送结果给指定服务
             MigrateResultDTO resultDTO = new MigrateResultDTO(ruleResult.getResult(), getRspHeads(), ruleResponse.getRequestId());
             Forest.post("http://localhost:8082/auth/response").async().contentTypeJson().addBody(resultDTO).execute();

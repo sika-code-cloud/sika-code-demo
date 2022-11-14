@@ -2,7 +2,7 @@ package com.sika.code.demo.interfaces.common.auth;
 
 import cn.dev33.satoken.stp.SaLoginModel;
 import cn.dev33.satoken.stp.StpUtil;
-import com.alibaba.fastjson.JSON;
+import com.sika.code.core.base.util.JSONUtil;
 import com.sika.code.core.result.Result;
 import com.sika.code.demo.infrastructure.db.business.user.po.UserPO;
 import com.sika.code.demo.interfaces.common.controller.BaseBizController;
@@ -28,9 +28,9 @@ public class AuthController extends BaseBizController {
 
     @RequestMapping(value = "list1")
     public Result list1(@RequestBody Map<String, Object> map) {
-        log.info("请求参数():{}", JSON.toJSONString(map));
-        log.info("StpUtil.getSession():{}", JSON.toJSONString(StpUtil.getSession()));
-        log.info("StpUtil.getTokenSession():{}", JSON.toJSONString(StpUtil.getTokenSession()));
+        log.info("请求参数():{}", JSONUtil.toJSONString(map));
+        log.info("StpUtil.getSession():{}", JSONUtil.toJSONString(StpUtil.getSession()));
+        log.info("StpUtil.getTokenSession():{}", JSONUtil.toJSONString(StpUtil.getTokenSession()));
         log.info("user-delete:{}", StpUtil.hasPermission("user-delete"));
         log.info("user-list:{}", StpUtil.hasPermission("user-list"));
         log.info("per-delete:{}", StpUtil.hasPermission("per-delete"));

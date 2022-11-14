@@ -1,7 +1,7 @@
 package com.sika.code.demo.interfaces.common.log.aspect;
 
 import cn.hutool.core.util.StrUtil;
-import com.alibaba.fastjson.JSON;
+import com.sika.code.core.base.util.JSONUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
@@ -65,9 +65,9 @@ public class ControllerLogAspect {
                 if (o instanceof ServletResponse) {
                     continue;
                 } else if (o instanceof Model) {
-                    log.info("org.springframework.ui.Model  ---------   " + JSON.toJSONString(o));
+                    log.info("org.springframework.ui.Model  ---------   " + JSONUtil.toJSONString(o));
                 } else if (o instanceof ServletRequest) {
-                    log.info("ServletRequest ParameterMap  ---------   " + JSON.toJSONString(((ServletRequest) o).getParameterMap()));
+                    log.info("ServletRequest ParameterMap  ---------   " + JSONUtil.toJSONString(((ServletRequest) o).getParameterMap()));
                 } else if (!(o instanceof BindingResult)) {
                     log.info(String.valueOf(o));
                 }
@@ -84,7 +84,7 @@ public class ControllerLogAspect {
     @AfterReturning(value = "controllerLogMethodCut()||controllerLogCut()", returning = "obj")
     public Object controllerLogResponse(Object obj) throws Throwable {
         log.info("------------------------  Response Result  ------------------------");
-        log.info(JSON.toJSONString(obj));
+        log.info(JSONUtil.toJSONString(obj));
         log.info("**********************************************  Request End **********************************************");
 //        LogUtil.clearMDC();
         return obj;

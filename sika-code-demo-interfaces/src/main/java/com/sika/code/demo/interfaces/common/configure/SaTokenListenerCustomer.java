@@ -2,7 +2,7 @@ package com.sika.code.demo.interfaces.common.configure;
 
 import cn.dev33.satoken.listener.SaTokenListener;
 import cn.dev33.satoken.stp.SaLoginModel;
-import com.alibaba.fastjson.JSON;
+import com.sika.code.core.base.util.JSONUtil;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -18,7 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 public class SaTokenListenerCustomer implements SaTokenListener {
     @Override
     public void doLogin(String loginType, Object loginId, String tokenValue, SaLoginModel loginModel) {
-        log.info("doLogin-登录类型【{}】，登录ID：【{}】，Token值：【{}】,SaLoginModel【{}】", loginType, loginId, tokenValue, JSON.toJSONString(loginModel));
+        log.info("doLogin-登录类型【{}】，登录ID：【{}】，Token值：【{}】,SaLoginModel【{}】", loginType, loginId, tokenValue, JSONUtil.toJSONString(loginModel));
     }
 
     @Override

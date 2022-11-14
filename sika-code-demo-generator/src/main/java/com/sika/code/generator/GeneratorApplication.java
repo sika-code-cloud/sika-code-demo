@@ -32,7 +32,7 @@ public class GeneratorApplication {
         clientDTO.setGenerateDomain(true);
         clientDTO.setApplicationClassName(SikaCodeDemoApplication.class.getName());
         clientDTO.setApplicationSimpleName(SikaCodeDemoApplication.class.getSimpleName());
-        GeneratorCommander.doGenerator(clientDTO);
+        new GeneratorCommander().doGenerator(clientDTO);
     }
 
 }

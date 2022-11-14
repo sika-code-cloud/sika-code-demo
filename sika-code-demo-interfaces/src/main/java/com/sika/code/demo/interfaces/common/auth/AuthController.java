@@ -68,7 +68,8 @@ public class AuthController extends BaseBizController {
         StpUtil.getSession().set("user", userPO);
         StpUtil.getSession().set("name", "zhangsan");
         StpUtil.getSession().set("name", "lisi");
-        return success(userPO);
+        UserPO userPOF = StpUtil.getSession().getModel("user", UserPO.class);
+        return success(userPOF);
     }
 
     @RequestMapping(value = "getSessionKey")

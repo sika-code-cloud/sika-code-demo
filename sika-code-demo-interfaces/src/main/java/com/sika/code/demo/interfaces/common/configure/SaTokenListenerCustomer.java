@@ -37,12 +37,12 @@ public class SaTokenListenerCustomer implements SaTokenListener {
     }
 
     @Override
-    public void doDisable(String loginType, Object loginId, long disableTime) {
+    public void doDisable(String loginType, Object loginId, String service, int level, long disableTime) {
         log.info("doDisable-登录类型【{}】，登录ID：【{}】，disableTime值：【{}】", loginType, loginId, disableTime);
     }
 
     @Override
-    public void doUntieDisable(String loginType, Object loginId) {
+    public void doUntieDisable(String loginType, Object loginId, String service) {
         log.info("doUntieDisable-登录类型【{}】，登录ID：【{}】", loginType, loginId);
     }
 
@@ -54,5 +54,10 @@ public class SaTokenListenerCustomer implements SaTokenListener {
     @Override
     public void doLogoutSession(String id) {
         log.info("doLogoutSession-id【{}】", id);
+    }
+
+    @Override
+    public void doRenewTimeout(String tokenValue, Object loginId, long timeout) {
+
     }
 }

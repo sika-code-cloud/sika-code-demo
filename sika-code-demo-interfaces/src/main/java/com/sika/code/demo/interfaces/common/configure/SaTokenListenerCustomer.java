@@ -47,6 +47,16 @@ public class SaTokenListenerCustomer implements SaTokenListener {
     }
 
     @Override
+    public void doOpenSafe(String s, String s1, String s2, long l) {
+
+    }
+
+    @Override
+    public void doCloseSafe(String s, String s1, String s2) {
+
+    }
+
+    @Override
     public void doCreateSession(String id) {
         log.info("doCreateSession-id【{}】", id);
     }

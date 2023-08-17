@@ -38,8 +38,8 @@
                     </descriptorRefs>
                     <archive>
                         <manifestEntries>
-                            <Premain-Class>com.ysepay.base.TestAgent</Premain-Class>
-                            <Agent-Class>com.ysepay.base.TestAgent</Agent-Class>
+                            <Premain-Class>com.sika.code.demo.TestAgent</Premain-Class>
+                            <Agent-Class>com.sika.code.demo.TestAgent</Agent-Class>
                             <Can-Redefine-Classes>true</Can-Redefine-Classes>
                             <Can-Retransform-Classes>true</Can-Retransform-Classes>
                         </manifestEntries>

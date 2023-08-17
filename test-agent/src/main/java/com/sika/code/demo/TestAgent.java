@@ -10,16 +10,12 @@ import net.bytebuddy.utility.JavaModule;
 
 import java.io.File;
 import java.io.IOException;
-import java.lang.instrument.ClassFileTransformer;
-import java.lang.instrument.IllegalClassFormatException;
 import java.lang.instrument.Instrumentation;
 import java.lang.reflect.Method;
 import java.nio.file.Files;
-import java.security.ProtectionDomain;
 import java.util.concurrent.Callable;
 
 import static net.bytebuddy.matcher.ElementMatchers.*;
-import static net.bytebuddy.matcher.ElementMatchers.nameContains;
 
 public class TestAgent {
 

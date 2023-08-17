@@ -30,7 +30,7 @@
     <!-- 根据查询条件获取列表信息 -->
     <select id="list" resultMap="ResultMap" parameterType="com.sika.code.demo.infrastructure.business.node.pojo.query.NodeQuery" >
         SELECT <include refid="Column_List" />
-        FROM lf_node
+        FROM sk_node
         <where>
             is_deleted = 0
             <include refid="query_sql" />
@@ -40,7 +40,7 @@
     <!-- 根据查询条件获取Id列表信息 -->
     <select id="listId" resultType="java.lang.Long" parameterType="com.sika.code.demo.infrastructure.business.node.pojo.query.NodeQuery" >
         SELECT id
-        FROM lf_node
+        FROM sk_node
         <where>
             is_deleted = 0
             <include refid="query_sql" />
@@ -50,7 +50,7 @@
     <!-- 根据查询条件获取实体信息 -->
     <select id="find" resultMap="ResultMap" parameterType="com.sika.code.demo.infrastructure.business.node.pojo.query.NodeQuery" >
         SELECT <include refid="Column_List" />
-        FROM lf_node
+        FROM sk_node
         <where>
             is_deleted = 0
             <include refid="query_sql" />
@@ -61,7 +61,7 @@
     <!-- 根据查询条件获取表id -->
     <select id="findId" resultType="java.lang.Long" parameterType="com.sika.code.demo.infrastructure.business.node.pojo.query.NodeQuery" >
         SELECT id
-        FROM lf_node
+        FROM sk_node
         <where>
             is_deleted = 0
             <include refid="query_sql" />
@@ -72,19 +72,19 @@
     <!-- 根据查询条件获取分页信息 -->
     <select id="page" resultMap="ResultMap" parameterType="com.sika.code.demo.infrastructure.business.node.pojo.query.NodeQuery" >
         SELECT <include refid="Column_List" />
-        FROM lf_node
+        FROM sk_node
         <where>
             is_deleted = 0
             <include refid="query_sql" />
         </where>
         <include refid="order_by_sql"/>
-        LIMIT #{query.start}, #{query.pageSize}
+        LIMIT #{query.pageSize}
     </select>
 
     <!-- 根据查询条件获取总数量信息 -->
     <select id="count" resultType="Integer" parameterType="com.sika.code.demo.infrastructure.business.node.pojo.query.NodeQuery" >
         SELECT count(*)
-        FROM lf_node
+        FROM sk_node
         <where>
             is_deleted = 0
             <include refid="query_sql" />
@@ -109,6 +109,7 @@
         <if test="query.nodeScript != null">AND node_script = #{query.nodeScript}</if>
         <if test="query.tenantId != null">AND tenant_id = #{query.tenantId}</if>
         <if test="query.applicationId != null">AND application_id = #{query.applicationId}</if>
+        <if test="query.startIndex != null">AND id > #{query.startIndex}</if>
         <if test="query.ids != null and query.ids.size() > 0">
             AND id in
             <foreach item="item" collection="query.ids" separator="," open="(" close=")" index="">

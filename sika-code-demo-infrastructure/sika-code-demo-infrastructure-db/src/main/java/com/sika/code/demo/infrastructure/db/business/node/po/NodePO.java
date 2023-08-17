@@ -15,7 +15,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
  */
 @Getter
 @Setter
-@TableName("lf_node")
+@TableName("sk_node")
 public class NodePO extends BasePoAuto<Long> {
     private static final long serialVersionUID = 1L;
     /**

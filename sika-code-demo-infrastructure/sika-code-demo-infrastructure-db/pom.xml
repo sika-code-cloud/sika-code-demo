@@ -15,13 +15,18 @@
         <dependency>
             <groupId>com.sika.code.demo</groupId>
             <artifactId>sika-code-demo-infrastructure-common</artifactId>
-            <version>${revision}</version>
+            <version>${version}</version>
         </dependency>
 
         <!-- 移除tomcat-jdbc连接池 -->
         <dependency>
             <groupId>io.github.sika-code-cloud</groupId>
             <artifactId>sika-code-db</artifactId>
+            <version>${io.github.sika-code.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.sika-code-cloud</groupId>
+            <artifactId>sika-code-db-sharding</artifactId>
             <version>${io.github.sika-code.version}</version>
         </dependency>
     </dependencies>

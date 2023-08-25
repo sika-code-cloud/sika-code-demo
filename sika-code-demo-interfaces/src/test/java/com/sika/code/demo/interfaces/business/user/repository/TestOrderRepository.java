@@ -25,7 +25,7 @@ import java.util.List;
  * @since 2022-07-30 12:59:54
  */
 @SpringBootTest(classes = SikaCodeDemoApplication.class)
-public class TestUserRepository extends BaseTestRepository {
+public class TestOrderRepository extends BaseTestRepository {
     @Resource
     private UserRepository userRepository;
 

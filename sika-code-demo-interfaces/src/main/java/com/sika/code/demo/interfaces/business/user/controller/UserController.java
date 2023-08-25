@@ -1,6 +1,9 @@
 package com.sika.code.demo.interfaces.business.user.controller;
 
 
+import com.sika.code.demo.domain.business.order.repository.OrderRepository;
+import com.sika.code.demo.infrastructure.business.user.pojo.query.OrderQuery;
+import com.sika.code.demo.infrastructure.db.business.order.po.OrderPO;
 import com.sika.code.demo.interfaces.common.controller.BaseBizController;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -33,6 +36,8 @@ public class UserController extends BaseBizController {
 
     @Resource
     private UserService userService;
+    @Resource
+    private OrderRepository orderRepository;
 
     @RequestMapping(value = "save")
     public Result save(@RequestBody UserDTO dto) {
@@ -58,6 +63,11 @@ public class UserController extends BaseBizController {
     @RequestMapping(value = "list")
     public Result list(@RequestBody UserQuery query) {
         return success(userService.list(query));
+    }
+
+    @RequestMapping(value = "list")
+    public Result list(@RequestBody OrderQuery query) {
+        return success(orderRepository.list(query));
     }
 
     @RequestMapping(value = "readData")

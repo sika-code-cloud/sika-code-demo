@@ -13,7 +13,7 @@ spring:
       ds0:
         type: com.zaxxer.hikari.HikariDataSource
         driver-class-name: org.postgresql.Driver
-        jdbc-url: 'jdbc:postgresql://paychan1.dev.pgsql.db.com:5001/db_paycore_order_0?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&prepareThreshold=0&stringtype=unspecified'
+        jdbc-url: 'jdbc:postgresql://localhost:5001/test_0?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&prepareThreshold=0&stringtype=unspecified'
         password: 5r4fBnCv7Xly3GSV
         username: order_
         idle-timeout: '30000'
@@ -24,7 +24,7 @@ spring:
       ds1:
         type: com.zaxxer.hikari.HikariDataSource
         driver-class-name: org.postgresql.Driver
-        jdbc-url: 'jdbc:postgresql://paychan1.dev.pgsql.db.com:5001/db_paycore_order_1?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&prepareThreshold=0&stringtype=unspecified'
+        jdbc-url: 'jdbc:postgresql://localhost:5001/test_1?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&prepareThreshold=0&stringtype=unspecified'
         password: 5r4fBnCv7Xly3GSV
         username: order_
         idle-timeout: '30000'
@@ -35,7 +35,7 @@ spring:
       ds2:
         type: com.zaxxer.hikari.HikariDataSource
         driver-class-name: org.postgresql.Driver
-        jdbc-url: 'jdbc:postgresql://paychan1.dev.pgsql.db.com:5001/db_paycore_order_2?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&prepareThreshold=0&stringtype=unspecified'
+        jdbc-url: 'jdbc:postgresql://localhost:5001/test_2?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&prepareThreshold=0&stringtype=unspecified'
         password: 5r4fBnCv7Xly3GSV
         username: order_
         idle-timeout: '30000'
@@ -46,7 +46,7 @@ spring:
       ds3:
         type: com.zaxxer.hikari.HikariDataSource
         driver-class-name: org.postgresql.Driver
-        jdbc-url: 'jdbc:postgresql://paychan1.dev.pgsql.db.com:5001/db_paycore_order_3?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&prepareThreshold=0&stringtype=unspecified'
+        jdbc-url: 'jdbc:postgresql://localhost:5001/test_3?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&prepareThreshold=0&stringtype=unspecified'
         password: 5r4fBnCv7Xly3GSV
         username: order_
         idle-timeout: '30000'
@@ -57,7 +57,7 @@ spring:
       ds4:
         type: com.zaxxer.hikari.HikariDataSource
         driver-class-name: org.postgresql.Driver
-        jdbc-url: 'jdbc:postgresql://paychan2.dev.pgsql.db.com:5001/db_paycore_order_4?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&prepareThreshold=0&stringtype=unspecified'
+        jdbc-url: 'jdbc:postgresql://localhost2:5001/test_4?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&prepareThreshold=0&stringtype=unspecified'
         password: 5r4fBnCv7Xly3GSV
         username: order_
         idle-timeout: '30000'
@@ -68,7 +68,7 @@ spring:
       ds5:
         type: com.zaxxer.hikari.HikariDataSource
         driver-class-name: org.postgresql.Driver
-        jdbc-url: 'jdbc:postgresql://paychan2.dev.pgsql.db.com:5001/db_paycore_order_5?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&prepareThreshold=0&stringtype=unspecified'
+        jdbc-url: 'jdbc:postgresql://localhost2:5001/test_5?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&prepareThreshold=0&stringtype=unspecified'
         password: 5r4fBnCv7Xly3GSV
         username: order_
         idle-timeout: '30000'
@@ -79,7 +79,7 @@ spring:
       ds6:
         type: com.zaxxer.hikari.HikariDataSource
         driver-class-name: org.postgresql.Driver
-        jdbc-url: 'jdbc:postgresql://paychan2.dev.pgsql.db.com:5001/db_paycore_order_6?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&prepareThreshold=0&stringtype=unspecified'
+        jdbc-url: 'jdbc:postgresql://localhost2:5001/test_6?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&prepareThreshold=0&stringtype=unspecified'
         password: 5r4fBnCv7Xly3GSV
         username: order_
         idle-timeout: '30000'
@@ -90,7 +90,7 @@ spring:
       ds7:
         type: com.zaxxer.hikari.HikariDataSource
         driver-class-name: org.postgresql.Driver
-        jdbc-url: 'jdbc:postgresql://paychan2.dev.pgsql.db.com:5001/db_paycore_order_7?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&prepareThreshold=0&stringtype=unspecified'
+        jdbc-url: 'jdbc:postgresql://localhost2:5001/test_7?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&prepareThreshold=0&stringtype=unspecified'
         password: 5r4fBnCv7Xly3GSV
         username: order_
         idle-timeout: '30000'
@@ -173,12 +173,12 @@ spring:
     ################### mysq end ##########################
     ################### redis 单机版 start ##########################
   redis:
-#    host: 121.89.202.68
-#    port: 6379
+    #    host: 121.89.202.68
+    #    port: 6379
     host: localhost
     port: 6379
     timeout: 3000
-#    password: SikaDesignAdmin20201225
+    #    password: SikaDesignAdmin20201225
     ################### redis 单机版 end ##########################
     #    cluster:
     #      nodes: localhost:6379

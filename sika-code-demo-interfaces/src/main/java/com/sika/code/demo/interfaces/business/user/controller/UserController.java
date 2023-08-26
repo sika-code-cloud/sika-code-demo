@@ -65,7 +65,7 @@ public class UserController extends BaseBizController {
         return success(userService.list(query));
     }
 
-    @RequestMapping(value = "list")
+    @RequestMapping(value = "orders")
     public Result list(@RequestBody OrderQuery query) {
         return success(orderRepository.list(query));
     }

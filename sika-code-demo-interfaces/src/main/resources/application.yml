@@ -2,8 +2,6 @@
 spring:
   application:
     name: sika-code-demo
-  profiles:
-    active: @profileActive@
     # Base packages to scan Dubbo Component: @org.apache.dubbo.config.annotation.Service
 
   batch:

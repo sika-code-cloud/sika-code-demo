@@ -25,6 +25,10 @@
                     <artifactId>hutool-core</artifactId>
                     <groupId>cn.hutool</groupId>
                 </exclusion>
+                <exclusion>
+                    <groupId>org.yaml</groupId>
+                    <artifactId>snakeyaml</artifactId>
+                </exclusion>
             </exclusions>
         </dependency>
     </dependencies>

@@ -200,6 +200,7 @@
     <!-- 根据查询条件SQL -->
     <sql id="query_sql">
         <if test="query.id != null">AND id = #{query.id}</if>
+        <if test="query.orderNo != null">AND order_no = #{query.orderNo}</if>
     </sql>
 
     <!-- 排序的sql -->

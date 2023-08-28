@@ -263,11 +263,6 @@
             <artifactId>junit-jupiter</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>com.sika.base</groupId>
-            <artifactId>sika-common-cache</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
 
         <!-- 使用统一日志框架slf4j -->
         <dependency>

@@ -25,11 +25,12 @@
                     <artifactId>hutool-core</artifactId>
                     <groupId>cn.hutool</groupId>
                 </exclusion>
-                <exclusion>
-                    <groupId>org.yaml</groupId>
-                    <artifactId>snakeyaml</artifactId>
-                </exclusion>
             </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>io.github.sika-code-cloud</groupId>
+            <artifactId>sika-code-monitor-client</artifactId>
+            <version>${io.github.sika-code.version}</version>
         </dependency>
     </dependencies>
 

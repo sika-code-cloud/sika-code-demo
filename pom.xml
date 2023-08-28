@@ -14,8 +14,6 @@
         <module>sika-code-demo-interfaces</module>
         <module>sika-code-demo-generator</module>
         <module>sika-code-demo-infrastructure</module>
-        <module>sika-codegenerator</module>
-        <module>test-agent</module>
     </modules>
     <packaging>pom</packaging>
     <properties>

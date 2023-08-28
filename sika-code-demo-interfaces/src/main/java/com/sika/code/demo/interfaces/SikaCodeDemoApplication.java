@@ -3,8 +3,8 @@ package com.sika.code.demo.interfaces;
 import lombok.extern.slf4j.Slf4j;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.actuate.autoconfigure.metrics.redis.LettuceMetricsAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
 
 /**
  * 启动类
@@ -19,9 +19,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @Slf4j
 public class SikaCodeDemoApplication {
     //    static {
-//        System.setProperty("log4j2.isThreadContextMapInherimeble", "true");
-//        System.setProperty("dubbo.application.logger", "log4j2");
-//    }
+    //        System.setProperty("log4j2.isThreadContextMapInherimeble", "true");
+    //        System.setProperty("dubbo.application.logger", "log4j2");
+    //    }
     public static void main(String[] args) {
         SpringApplication.run(SikaCodeDemoApplication.class, args);
 

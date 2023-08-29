@@ -34,7 +34,6 @@ public class JobController extends BaseBizController {
     public Result custDoJob(@RequestBody BatchBean batchBean) {
         StandardContext standardContext = new StandardContext();
         try {
-            standardContext.setBatchBean(batchBean);
             standardEntity.execute(standardContext);
         } catch (Exception e) {
             e.printStackTrace();

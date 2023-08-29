@@ -79,16 +79,16 @@ mybatis:
 
 management:
   server:
-    port: '9090'
+    port: 9090
   endpoints:
     web:
       exposure:
-        include: 'prometheus,health'
+        include: prometheus,health
       base-path: /actuator
   metrics:
     tags:
-      application: '${spring.application.name}'
+      application: ${spring.application.name}
   endpoint:
     health:
       probes:
-        enabled: 'true'
+        enabled: true

@@ -112,6 +112,7 @@ spring:
           tb-to-ds-mapping:
             type: TWICE_HASH_COMPLEX_TO_DATASOURCE_MAPPING
             props:
+#              table-to-datasource-mapping: 'ds0.${0..4095}'
               table-to-datasource-mapping: 'ds0.${0..511},ds1.${512..1023},ds2.${1024..1535},ds3.${1536..2047},ds4.${2048..2559},ds5.${2560..3071},ds6.${3072..3583},ds7.${3584..4095}'
               hot-customer-datasource: ''
               all-table-sequences: '${0..4095}'
@@ -158,6 +159,7 @@ spring:
                 sharding-column: out_trade_no
           t_mch_order:
             actual-data-nodes: 'ds0.t_mch_order_${0..511},ds1.t_mch_order_${512..1023},ds2.t_mch_order_${1024..1535},ds3.t_mch_order_${1536..2047},ds4.t_mch_order_${2048..2559},ds5.t_mch_order_${2560..3071},ds6.t_mch_order_${3072..3583},ds7.t_mch_order_${3584..4095}'
+#            actual-data-nodes: 'ds0.t_mch_order_${0..4095}'
             table-strategy:
               complex:
                 sharding-algorithm-name: t-twice-hash-mod-cmplx

@@ -14,4 +14,14 @@ public class OrderQuery extends PageQuery<Long> {
 
     /** 银盛订单号 */
     private String orderNo;
+
+    @Override
+    public Long getId() {
+        return super.getId();
+    }
+
+    @Override
+    public void setId(Long id) {
+        super.setId(id);
+    }
 }

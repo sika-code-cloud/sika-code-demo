@@ -8,17 +8,16 @@ spring:
   sharding:
     enabled: true
   datasource:
-    type: com.zaxxer.hikari.HikariDataSource
-#    url: jdbc:postgresql://localhost:5432/test
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:postgresql://localhost:5432/test
 #    url: jdbc:mysql://localhost:3306/sk-check?useUnicode=true&rewriteBatchedStatements=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false&serverTimezone=GMT%2B8
-    url: jdbc:mysql://121.89.202.68:3306/test_db_06?useUnicode=true&rewriteBatchedStatements=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false&serverTimezone=GMT%2B8&allowPublicKeyRetrieval=true
-    username: root
-    password: SikaDesignAdmin20201225
+    #            jdbc-url: jdbc:mysql://localhost:3306/sika_direct_rent_db?useUnicode=true&rewriteBatchedStatements=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false&serverTimezone=GMT%2B8
+    #    username: root
+    #    password: SikaDesignAdmin20201225
     #    password: 123456
-#    username: postgres
-#    password: 123456
-#    driver-class-name: org.postgresql.Driver
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: postgres
+    password: 123456
+    driver-class-name: org.postgresql.Driver
     hikari:
       # JDBC 配置(驱动类自动从url的mysql识别,数据源类型自动识别)
       minimum-idle: 10
@@ -35,12 +34,12 @@ spring:
     ################### mysq end ##########################
     ################### redis 单机版 start ##########################
   redis:
-    host: 121.89.202.68
-    port: 6379
-#    host: localhost
+#    host: 121.89.202.68
 #    port: 6379
+    host: localhost
+    port: 6379
     timeout: 3000
-    password: SikaDesignAdmin20201225
+#    password: SikaDesignAdmin20201225
     ################### redis 单机版 end ##########################
     #    cluster:
     #      nodes: localhost:6379

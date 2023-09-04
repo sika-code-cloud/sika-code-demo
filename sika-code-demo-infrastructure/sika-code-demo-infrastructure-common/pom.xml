@@ -32,6 +32,11 @@
             <artifactId>sika-code-monitor-client</artifactId>
             <version>${io.github.sika-code.version}</version>
         </dependency>
+        <dependency>
+            <groupId>cn.hippo4j</groupId>
+            <artifactId>hippo4j-config-spring-boot-starter</artifactId>
+            <version>1.5.0</version>
+        </dependency>
     </dependencies>
 
 </project>

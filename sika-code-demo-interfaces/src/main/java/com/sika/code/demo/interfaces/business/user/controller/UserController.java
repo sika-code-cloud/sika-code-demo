@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 import org.springframework.web.bind.annotation.RestController;
 
@@ -38,6 +40,9 @@ public class UserController extends BaseBizController {
     private UserService userService;
     @Resource
     private OrderRepository orderRepository;
+
+    @Resource
+    private ThreadPoolExecutor messageConsumeDynamicExecutor;
 
     @RequestMapping(value = "save")
     public Result save(@RequestBody UserDTO dto) {
@@ -67,7 +72,15 @@ public class UserController extends BaseBizController {
 
     @RequestMapping(value = "orders")
     public Result list(@RequestBody OrderQuery query) {
-        return success(orderRepository.list(query));
+        messageConsumeDynamicExecutor.execute(() -> {
+            try {
+                TimeUnit.SECONDS.sleep(10L);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        });
+//        return success(orderRepository.list(query));
+        return success("success");
     }
 
     @RequestMapping(value = "readData")

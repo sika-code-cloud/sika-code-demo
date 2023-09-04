@@ -2,7 +2,7 @@ package com.sika.code.demo.interfaces.common.configure;
 
 import cn.hippo4j.core.executor.DynamicThreadPool;
 import cn.hippo4j.core.executor.support.ThreadPoolBuilder;
-import com.sika.code.monitor.core.thread.hippo4j.rejected.MonitorRejectedExecutionHandler;
+import com.sika.code.monitor.core.thread.hippo4j.rejected.MonitorAbortPolicyRejectedExecutionHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -19,7 +19,7 @@ public class ThreadPoolConfig {
                 .threadPoolId(threadPoolId)
                 .dynamicPool()
                 .build();
-        messageConsumeDynamicExecutor.setRejectedExecutionHandler(new MonitorRejectedExecutionHandler.CustomErrorLogRejectedExecutionHandler());
+        messageConsumeDynamicExecutor.setRejectedExecutionHandler(new MonitorAbortPolicyRejectedExecutionHandler.CustomAbortPolicy());
         return messageConsumeDynamicExecutor;
     }
 

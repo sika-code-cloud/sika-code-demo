@@ -1,5 +1,6 @@
 package com.sika.code.demo.interfaces;
 
+import cn.hippo4j.core.enable.EnableDynamicThreadPool;
 import lombok.extern.slf4j.Slf4j;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
@@ -16,6 +17,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication(scanBasePackages = {"com.sika.code.demo", "com.sika.code"})
 @MapperScan({"com.sika.code.demo.**.mapper"})
 @Slf4j
+@EnableDynamicThreadPool
 public class SikaCodeDemoApplication {
     //    static {
     //        System.setProperty("log4j2.isThreadContextMapInherimeble", "true");

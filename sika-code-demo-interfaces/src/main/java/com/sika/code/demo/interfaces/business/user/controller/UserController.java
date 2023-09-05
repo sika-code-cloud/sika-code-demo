@@ -1,28 +1,21 @@
 package com.sika.code.demo.interfaces.business.user.controller;
 
-
-import com.sika.code.demo.domain.business.order.repository.OrderRepository;
-import com.sika.code.demo.infrastructure.business.user.pojo.query.OrderQuery;
-import com.sika.code.demo.infrastructure.db.business.order.po.OrderPO;
-import com.sika.code.demo.interfaces.common.controller.BaseBizController;
-import org.springframework.web.bind.annotation.RequestMapping;
-
 import com.sika.code.core.result.Result;
-import com.sika.code.demo.infrastructure.business.user.pojo.query.UserQuery;
-import com.sika.code.demo.infrastructure.business.user.pojo.dto.UserDTO;
-
 import com.sika.code.demo.application.business.user.service.UserService;
+import com.sika.code.demo.domain.business.order.repository.OrderRepository;
+import com.sika.code.demo.infrastructure.business.user.pojo.dto.UserDTO;
+import com.sika.code.demo.infrastructure.business.user.pojo.query.OrderQuery;
+import com.sika.code.demo.infrastructure.business.user.pojo.query.UserQuery;
+import com.sika.code.demo.interfaces.common.controller.BaseBizController;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
-
-import org.springframework.web.bind.annotation.RequestBody;
-
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
-
-import org.springframework.web.bind.annotation.RestController;
 
 /**
  * <p>
@@ -44,11 +37,13 @@ public class UserController extends BaseBizController {
     @Resource
     private ThreadPoolExecutor messageConsumeDynamicExecutor;
 
+    @Resource
+    private ThreadPoolExecutor dtpExecutor1;
+
     @RequestMapping(value = "save")
     public Result save(@RequestBody UserDTO dto) {
         return success(userService.save(dto));
     }
-
 
     @RequestMapping(value = "saveBatch")
     public Result saveBatch(@RequestBody List<UserDTO> dtos) {
@@ -72,14 +67,29 @@ public class UserController extends BaseBizController {
 
     @RequestMapping(value = "orders")
     public Result list(@RequestBody OrderQuery query) {
-        messageConsumeDynamicExecutor.execute(() -> {
-            try {
-                TimeUnit.SECONDS.sleep(10L);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-        });
-//        return success(orderRepository.list(query));
+        try {
+            messageConsumeDynamicExecutor.execute(() -> {
+                try {
+                    TimeUnit.SECONDS.sleep(10L);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            });
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+        }
+        try {
+            dtpExecutor1.execute(() -> {
+                try {
+                    TimeUnit.SECONDS.sleep(10L);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            });
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+        }
+        //        return success(orderRepository.list(query));
         return success("success");
     }
 

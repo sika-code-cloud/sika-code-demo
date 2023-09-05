@@ -89,7 +89,7 @@ public class UserController extends BaseBizController {
         } catch (Exception e) {
             log.error(e.getMessage(), e);
         }
-        //        return success(orderRepository.list(query));
+        orderRepository.list(query);
         return success("success");
     }
 

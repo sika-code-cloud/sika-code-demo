@@ -11,10 +11,32 @@ spring:
       names: parentjob
     # spring batch相关表前缀, 默认为 batch_
     table-prefix: BATCH_
-
-
-
-tlog:
+  monitor:
+    connectorPool:
+      db:
+        druid:
+          enabled: true
+        hikari:
+          enabled: true
+        shardingSphere:
+          enabled: true
+    invoke:
+      db:
+        mybatis:
+          enabled: true
+      rpc:
+        dubbo:
+          enabled: true
+    threadPool:
+      rpc:
+        dubbo:
+          enabled: true
+      dynamicTp:
+        enabled: true
+      hippo4j:
+        enabled: true
+      tomcat:
+        enabled: true
   id-generator: com.sika.code.core.log.config.TraceIdGenerator
   enable-invoke-time-print: true
   pattern: '[$preApp][$preIp][$spanId][$traceId]'

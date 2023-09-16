@@ -20,12 +20,12 @@ public class ThreadPoolConfig {
     SimpleMeterRegistry simpleMeterRegistry() {
         return new SimpleMeterRegistry();
     }
-    @Bean
+//    @Bean
     CustomerPromethuesMeterRegistry customerPromethuesMeterRegistry(PrometheusConfig prometheusConfig,
         CollectorRegistry collectorRegistry, Clock clock, ObjectProvider<ExemplarSampler> exemplarSamplerProvider) {
         return new CustomerPromethuesMeterRegistry(prometheusConfig, collectorRegistry, clock, exemplarSamplerProvider.getIfAvailable());
     }
-    @Bean
+//    @Bean
     CustomerLoggingMeterRegistry customerLoggingMeterRegistry(SimpleMeterRegistry simpleMeterRegistry, CustomerPromethuesMeterRegistry customerPromethuesMeterRegistry) {
         CustomerLoggingMeterRegistry registry = new CustomerLoggingMeterRegistry();
         registry.setSimpleMeterRegistry(simpleMeterRegistry);

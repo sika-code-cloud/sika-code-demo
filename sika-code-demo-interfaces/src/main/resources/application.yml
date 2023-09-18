@@ -98,7 +98,6 @@ mybatis:
 #mybatis-plus:
 #  configuration:
 #    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-
 management:
   server:
     port: 9090
@@ -108,8 +107,23 @@ management:
         include: prometheus,health
       base-path: /actuator
   metrics:
+    web:
+      server:
+        request:
+          autotime:
+            percentilesHistogram: false
+            percentiles: 0.50, 0.90, 0.95, 0.99
     tags:
       application: ${spring.application.name}
+    enable:
+      'system.cpu.count': true
+      'lettuce.command.completion': true
+      'http.server.requests': true
+    name1: 1111122
+    invoke:
+      redisLettuceCompletion:
+        metricsName: 'lettuce.command.completion.temp'
+        metricsDesc: 'lettuce.desc'
   endpoint:
     health:
       probes:

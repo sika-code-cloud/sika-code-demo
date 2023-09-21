@@ -119,11 +119,12 @@ management:
       'system.cpu.count': true
       'lettuce.command.completion': true
       'http.server.requests': true
-    name1: 1111122
-    invoke:
-      redisLettuceCompletion:
-        metricsName: 'lettuce.command.completion.temp'
-        metricsDesc: 'lettuce.desc'
+    sika:
+      invoke:
+        redisLettuceCompletion:
+          metricsName: 'lettuce.command.completion.temp'
+          metricsDesc: 'lettuce.desc'
+          percentiles: 0.50, 0.90, 0.95, 0.99, 0.999
   endpoint:
     health:
       probes:

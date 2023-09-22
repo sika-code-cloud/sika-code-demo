@@ -120,6 +120,11 @@ management:
       'lettuce.command.completion': true
       'http.server.requests': true
     sika:
+      threadPool:
+        tomcat:
+          metricsName: "tomcat.temp"
+        businessHippo4j:
+          metricsName: "businessHippo4j.temp"
       invoke:
         redisLettuceCompletion:
           metricsName: 'lettuce.command.completion.temp'

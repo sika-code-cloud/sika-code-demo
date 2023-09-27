@@ -133,6 +133,11 @@ management:
           metricsName: 'lettuce.command.completion.temp'
           metricsDesc: 'lettuce.desc'
           percentiles: 0.50, 0.90, 0.95, 0.99, 0.999
+          invokeAlert:
+            - timeunit: SECONDS
+              threshold: 100
+            - timeunit: MINUTES
+              threshold: 500
   endpoint:
     health:
       probes:

@@ -121,23 +121,28 @@ management:
       'http.server.requests': true
     sika:
       threadPool:
-        dynamicTp:
-          enabled: false
-        tomcat:
-          metricsName: "tomcat.temp"
-        businessHippo4j:
-          enabled: false
-          metricsName: "businessHippo4j.temp"
+        item:
+          dynamicTp:
+            enabled: false
+          tomcat:
+            metricsName: "tomcat.temp"
+          businessHippo4j:
+            enabled: false
+            metricsName: "businessHippo4j.temp"
       invoke:
-        redisLettuceCompletion:
-          metricsName: 'lettuce.command.completion.temp'
-          metricsDesc: 'lettuce.desc'
-          percentiles: 0.50, 0.90, 0.95, 0.99, 0.999
-          invokeAlert:
-            - timeunit: SECONDS
-              threshold: 100
-            - timeunit: MINUTES
-              threshold: 500
+        alertRules:
+          - timeunit: SECONDS
+            threshold: 300
+        item:
+          redisLettuceCompletion:
+            metricsName: 'lettuce.command.completion.temp'
+            metricsDesc: 'lettuce.desc'
+            percentiles: 0.50, 0.90, 0.95, 0.99, 0.999
+            alertRules:
+              - timeunit: MINUTES
+                threshold: 1
+              - timeunit: MINUTES
+                threshold: 5
   endpoint:
     health:
       probes:

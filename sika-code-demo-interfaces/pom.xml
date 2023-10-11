@@ -16,6 +16,11 @@
     </properties>
     <dependencies>
         <dependency>
+            <groupId>com.alibaba.boot</groupId>
+            <artifactId>nacos-config-spring-boot-starter</artifactId>
+            <version>0.2.12</version>
+        </dependency>
+        <dependency>
             <groupId>com.sika.code.demo</groupId>
             <artifactId>sika-code-demo-application</artifactId>
             <version>${revision}</version>

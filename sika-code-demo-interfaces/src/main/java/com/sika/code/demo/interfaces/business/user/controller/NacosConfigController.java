@@ -19,6 +19,8 @@ public class NacosConfigController {
 
     @Value(value = "${secret}")
     private String secret;
+    @Value(value = "${secret1}")
+    private String secret1;
     @Value("${nacos.config.data-id}")
     private String dataId;
     @Value("${nacos.config.group}")

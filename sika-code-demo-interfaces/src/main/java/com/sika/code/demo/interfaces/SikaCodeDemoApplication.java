@@ -6,6 +6,7 @@ import org.dromara.dynamictp.core.spring.EnableDynamicTp;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 /**
  * 启动类
@@ -20,6 +21,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @Slf4j
 @EnableDynamicThreadPool
 @EnableDynamicTp
+@EnableDiscoveryClient
 public class SikaCodeDemoApplication {
     //    static {
     //        System.setProperty("log4j2.isThreadContextMapInherimeble", "true");

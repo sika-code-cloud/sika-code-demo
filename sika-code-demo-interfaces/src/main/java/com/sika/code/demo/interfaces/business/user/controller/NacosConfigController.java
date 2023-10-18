@@ -4,6 +4,7 @@ import com.alibaba.nacos.api.annotation.NacosInjected;
 import com.alibaba.nacos.api.config.ConfigService;
 import com.alibaba.nacos.api.config.annotation.NacosValue;
 import com.alibaba.nacos.api.exception.NacosException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,26 +18,32 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class NacosConfigController {
 
-    @Value(value = "${secret}")
+    @NacosValue(value = "${secret}")
     private String secret;
+    @Autowired
+    private PatternProperties patternProperties;
     @Value(value = "${secret1}")
     private String secret1;
-    @Value("${nacos.config.data-id}")
+    //    @Value("${nacos.config.data-id}")
     private String dataId;
-    @Value("${nacos.config.group}")
+    //    @Value("${nacos.config.group}")
     private String group;
 
-    @NacosInjected
+//    @NacosInjected
     private ConfigService configService;
 
     @GetMapping("getSecret")
-    public String getSecret(){
+    public String getSecret() {
         return secret;
+    }
+    @GetMapping("getSecretTemp")
+    public Object getSecretTemp() {
+        return patternProperties;
     }
 
     // 可以获取nacos同一个命名空间下的其他dataId和group下面的配置
     @GetMapping("getConfig")
     public String getConfig() throws NacosException {
-        return configService.getConfig(dataId,group,5000);
+        return configService.getConfig("test1", group, 5000);
     }
 }

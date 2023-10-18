@@ -1,8 +1,8 @@
-spring:
-  application:
-    name: sika-code-demo
-    # Base packages to scan Dubbo Component: @org.apache.dubbo.config.annotation.Service
-# Spring boot application
+#spring:
+#  application:
+#    name: sika-code-demo
+#    # Base packages to scan Dubbo Component: @org.apache.dubbo.config.annotation.Service
+## Spring boot application
 #nacos:
 #  config:
 #    bootstrap:
@@ -12,23 +12,23 @@ spring:
 #    # 配置所属命名空间的id,此处我们配置名称为dev的id，可以在命名空间列表查看id的值
 #    namespace: 79346132-2155-4d98-a3b4-ccd85e59ba61
 #    ext-config: # 配置多个配置文件 数组形式
-#      - data-id: application.yaml # 配置 id，必须要加文件后缀
+#      - data-id: application # 配置 id，必须要加文件后缀
 #        group: DEFAULT_GROUP # 组别
 #        auto-refresh: true # 是否支持刷新
 #        type: yaml
-#      - data-id: test.yaml # 配置 id，必须要加文件后缀
-#        group: DEFAULT_GROUP # 组别
-#        auto-refresh: true # 是否支持刷新
-#        type: yaml
-#      - data-id: sharding.yaml
+#      - data-id: sharding
 #        group: DEFAULT_GROUP
 #        auto-refresh: true
 #        type: yaml
+##      - data-id: test1
+##        group: DEFAULT_GROUP
+##        auto-refresh: true
+##        type: yaml
 #    # 配置所属分组
 #    group: DEFAULT_GROUP
 #    # 配置ID
-##    data-ids: sharding.yaml,test.yaml,sharding.yaml
-#    data-id: test
+##    data-ids: test1,sharding,application
+#    data-id: test1
 #    # 配置文件类型,对应nacos配置页面的配置格式，默认是properties
 #    type: yaml
 #    # nacos服务器地址

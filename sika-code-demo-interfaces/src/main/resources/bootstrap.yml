@@ -30,16 +30,19 @@ spring:
         refresh-enabled: true
         enable-remote-sync-config: true
       #        cluster-name: test1,application,sharding
-#        extension-configs: # 配置多个配置文件 数组形式
-#          - data-id: test1.yaml # 配置 id，必须要加文件后缀
-#            group: DEFAULT_GROUP # 组别
-#            refresh: true # 是否支持刷新
-#          - data-id: sharding.yaml
-#            group: DEFAULT_GROUP
-#            refresh: true
-#          - data-id: application.yaml # 配置 id，必须要加文件后缀
-#            group: DEFAULT_GROUP # 组别
-#            refresh: true # 是否支持刷新
+        extension-configs: # 配置多个配置文件 数组形式
+          - data-id: test1.yaml # 配置 id，必须要加文件后缀
+            group: DEFAULT_GROUP # 组别
+            refresh: true # 是否支持刷新
+          - data-id: test.yaml # 配置 id，必须要加文件后缀
+            group: DEFAULT_GROUP # 组别
+            refresh: true # 是否支持刷新
+          - data-id: sharding.yaml
+            group: DEFAULT_GROUP
+            refresh: true
+          - data-id: application.yaml # 配置 id，必须要加文件后缀
+            group: DEFAULT_GROUP # 组别
+            refresh: true # 是否支持刷新
 
 
 

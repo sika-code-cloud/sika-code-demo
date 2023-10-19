@@ -1,14 +1,17 @@
 package com.sika.code.demo.interfaces.business.user.controller;
 
-import com.alibaba.nacos.api.annotation.NacosInjected;
+import com.alibaba.cloud.nacos.NacosConfigProperties;
+import com.alibaba.nacos.api.NacosFactory;
+import com.alibaba.nacos.api.PropertyKeyConst;
 import com.alibaba.nacos.api.config.ConfigService;
-import com.alibaba.nacos.api.config.annotation.NacosValue;
 import com.alibaba.nacos.api.exception.NacosException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Properties;
 
 /**
  * @author xk
@@ -18,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class NacosConfigController {
 
-    @NacosValue(value = "${secret}")
+    @Value(value = "${secret}")
     private String secret;
     @Autowired
     private PatternProperties patternProperties;
@@ -29,13 +32,19 @@ public class NacosConfigController {
     //    @Value("${nacos.config.group}")
     private String group;
 
-//    @NacosInjected
-    private ConfigService configService;
+    @Autowired
+    private NacosConfigProperties nacosConfigProperties;
 
     @GetMapping("getSecret")
     public String getSecret() {
         return secret;
     }
+
+    @GetMapping("getSecret1")
+    public String getSecret1() {
+        return secret1;
+    }
+
     @GetMapping("getSecretTemp")
     public Object getSecretTemp() {
         return patternProperties;
@@ -43,7 +52,26 @@ public class NacosConfigController {
 
     // 可以获取nacos同一个命名空间下的其他dataId和group下面的配置
     @GetMapping("getConfig")
-    public String getConfig() throws NacosException {
-        return configService.getConfig("test1", group, 5000);
+    public String getConfig() {
+        try {
+            return getConfigService().getConfig("test1.yaml", group, 5000);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "error";
+    }
+    private ConfigService getConfigService() {
+        Properties properties = new Properties();
+        properties.put(PropertyKeyConst.SERVER_ADDR, nacosConfigProperties.getServerAddr());
+        properties.put(PropertyKeyConst.NAMESPACE, nacosConfigProperties.getNamespace());
+        properties.put(PropertyKeyConst.USERNAME, nacosConfigProperties.getUsername());
+        properties.put(PropertyKeyConst.PASSWORD, nacosConfigProperties.getPassword());
+        ConfigService configService;
+        try {
+            configService = NacosFactory.createConfigService(properties);
+        } catch (NacosException e) {
+            throw new RuntimeException("Nacos config 配置 异常{}",e);
+        }
+        return configService;
     }
 }

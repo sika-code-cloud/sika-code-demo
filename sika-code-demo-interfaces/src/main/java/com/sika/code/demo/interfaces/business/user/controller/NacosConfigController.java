@@ -5,6 +5,7 @@ import com.alibaba.nacos.api.NacosFactory;
 import com.alibaba.nacos.api.PropertyKeyConst;
 import com.alibaba.nacos.api.config.ConfigService;
 import com.alibaba.nacos.api.exception.NacosException;
+import com.sika.code.monitor.core.common.properties.MetricsProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,6 +34,9 @@ public class NacosConfigController {
     private String group;
 
     @Autowired
+    private MetricsProperties metricsProperties;
+
+    @Autowired
     private NacosConfigProperties nacosConfigProperties;
 
     @GetMapping("getSecret")
@@ -47,7 +51,7 @@ public class NacosConfigController {
 
     @GetMapping("getSecretTemp")
     public Object getSecretTemp() {
-        return patternProperties;
+        return metricsProperties.getInvoke().getAlertRules();
     }
 
     // 可以获取nacos同一个命名空间下的其他dataId和group下面的配置
@@ -60,6 +64,7 @@ public class NacosConfigController {
         }
         return "error";
     }
+
     private ConfigService getConfigService() {
         Properties properties = new Properties();
         properties.put(PropertyKeyConst.SERVER_ADDR, nacosConfigProperties.getServerAddr());
@@ -70,7 +75,7 @@ public class NacosConfigController {
         try {
             configService = NacosFactory.createConfigService(properties);
         } catch (NacosException e) {
-            throw new RuntimeException("Nacos config 配置 异常{}",e);
+            throw new RuntimeException("Nacos config 配置 异常{}", e);
         }
         return configService;
     }

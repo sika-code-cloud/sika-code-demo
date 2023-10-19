@@ -67,28 +67,28 @@ public class UserController extends BaseBizController {
 
     @RequestMapping(value = "orders")
     public Result list(@RequestBody OrderQuery query) {
-        try {
-            messageConsumeDynamicExecutor.execute(() -> {
-                try {
-                    TimeUnit.SECONDS.sleep(10L);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-            });
-        } catch (Exception e) {
-            log.error(e.getMessage(), e);
-        }
-        try {
-            dtpExecutor1.execute(() -> {
-                try {
-                    TimeUnit.SECONDS.sleep(10L);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-            });
-        } catch (Exception e) {
-            log.error(e.getMessage(), e);
-        }
+//        try {
+//            messageConsumeDynamicExecutor.execute(() -> {
+//                try {
+//                    TimeUnit.SECONDS.sleep(10L);
+//                } catch (InterruptedException e) {
+//                    throw new RuntimeException(e);
+//                }
+//            });
+//        } catch (Exception e) {
+//            log.error(e.getMessage(), e);
+//        }
+//        try {
+//            dtpExecutor1.execute(() -> {
+//                try {
+//                    TimeUnit.SECONDS.sleep(10L);
+//                } catch (InterruptedException e) {
+//                    throw new RuntimeException(e);
+//                }
+//            });
+//        } catch (Exception e) {
+//            log.error(e.getMessage(), e);
+//        }
         orderRepository.list(query);
         return success("success");
     }

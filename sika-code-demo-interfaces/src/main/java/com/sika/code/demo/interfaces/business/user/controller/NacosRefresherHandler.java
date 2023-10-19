@@ -9,15 +9,18 @@ import com.alibaba.nacos.api.config.listener.Listener;
 import com.alibaba.nacos.api.exception.NacosException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
+import com.sika.code.monitor.core.common.config.BaseMetricsConfig;
+import com.sika.code.monitor.core.common.config.BaseMetricsItemConfig;
+import com.sika.code.monitor.core.common.manager.LoadMetricsConfigManager;
 import com.sika.code.monitor.core.common.properties.MetricsProperties;
-import com.sika.code.monitor.core.invoke.metics.InvokeTimedMetrics;
+import com.sika.code.monitor.core.invoke.config.InvokeTimedMetricsConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.YamlPropertiesFactoryBean;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
-import org.springframework.boot.context.properties.bind.Bindable;
 import org.springframework.boot.context.properties.bind.Binder;
 import org.springframework.boot.context.properties.source.ConfigurationPropertySource;
 import org.springframework.boot.context.properties.source.MapConfigurationPropertySource;
@@ -37,6 +40,8 @@ public class NacosRefresherHandler implements InitializingBean, ApplicationRunne
     private final ConfigService configService;
     String yamlString = "person:\n  name: John Doe\n  age: 30";
     private MetricsProperties metricsProperties;
+    @Autowired
+    private LoadMetricsConfigManager loadMetricsConfigManager;
 
     ObjectMapper objectMapper = new ObjectMapper(new YAMLFactory());
 
@@ -67,6 +72,12 @@ public class NacosRefresherHandler implements InitializingBean, ApplicationRunne
                     metricsProperties.getInvoke().getItem().get("dbClient").getAlertRules().get(0).setThreshold(
                             properties.getInvoke().getItem().get("dbClient").getAlertRules().get(0).getThreshold());
                     log.info("before-properties：{}, after-properties:{}", metricsProperties.getInvoke().getItem().get("dbClient").getAlertRules().get(0), properties.getInvoke().getItem().get("dbClient").getAlertRules().get(0));
+                    Map<String, BaseMetricsItemConfig<BaseMetricsConfig<?>>> e = loadMetricsConfigManager.getConfigMap();
+                    for (Map.Entry<String, BaseMetricsItemConfig<BaseMetricsConfig<?>>> entry : e.entrySet()) {
+
+                        InvokeTimedMetricsConfig invokeTimedMetricsConfigFromConfig = metricsProperties.getInvoke();
+
+                    }
                 } catch (Exception e) {
                     log.error(e.getMessage(), e);
                 }

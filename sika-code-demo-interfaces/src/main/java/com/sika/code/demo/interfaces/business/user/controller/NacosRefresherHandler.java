@@ -9,11 +9,19 @@ import com.alibaba.nacos.api.config.listener.Listener;
 import com.alibaba.nacos.api.exception.NacosException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
+import com.sika.code.monitor.core.alert.matcher.AlertMatcher;
 import com.sika.code.monitor.core.common.config.BaseMetricsConfig;
 import com.sika.code.monitor.core.common.config.BaseMetricsItemConfig;
 import com.sika.code.monitor.core.common.manager.LoadMetricsConfigManager;
 import com.sika.code.monitor.core.common.properties.MetricsProperties;
+import com.sika.code.monitor.core.invoke.config.InvokeAlertRuleConfig;
 import com.sika.code.monitor.core.invoke.config.InvokeTimedMetricsConfig;
+import com.sika.code.monitor.core.invoke.config.InvokeTimedMetricsItemConfig;
+import com.sika.code.monitor.core.invoke.metics.InvokeTimedMetrics;
+import io.micrometer.core.instrument.Gauge;
+import io.micrometer.core.instrument.Meter;
+import io.micrometer.core.instrument.MeterRegistry;
+import org.checkerframework.checker.units.qual.A;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.InitializingBean;
@@ -27,8 +35,10 @@ import org.springframework.boot.context.properties.source.MapConfigurationProper
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.Executor;
+import java.util.function.Consumer;
 
 @Component
 public class NacosRefresherHandler implements InitializingBean, ApplicationRunner {
@@ -42,6 +52,8 @@ public class NacosRefresherHandler implements InitializingBean, ApplicationRunne
     private MetricsProperties metricsProperties;
     @Autowired
     private LoadMetricsConfigManager loadMetricsConfigManager;
+    @Autowired
+    private MeterRegistry meterRegistry;
 
     ObjectMapper objectMapper = new ObjectMapper(new YAMLFactory());
 
@@ -69,14 +81,21 @@ public class NacosRefresherHandler implements InitializingBean, ApplicationRunne
                     MetricsProperties properties = binder.bind("management.metrics.sika", MetricsProperties.class).get();
 
                     BeanUtil.copyProperties(properties, metricsProperties);
-                    metricsProperties.getInvoke().getItem().get("dbClient").getAlertRules().get(0).setThreshold(
-                            properties.getInvoke().getItem().get("dbClient").getAlertRules().get(0).getThreshold());
-                    log.info("before-properties：{}, after-properties:{}", metricsProperties.getInvoke().getItem().get("dbClient").getAlertRules().get(0), properties.getInvoke().getItem().get("dbClient").getAlertRules().get(0));
-                    Map<String, BaseMetricsItemConfig<BaseMetricsConfig<?>>> e = loadMetricsConfigManager.getConfigMap();
-                    for (Map.Entry<String, BaseMetricsItemConfig<BaseMetricsConfig<?>>> entry : e.entrySet()) {
-
-                        InvokeTimedMetricsConfig invokeTimedMetricsConfigFromConfig = metricsProperties.getInvoke();
-
+                    BaseMetricsConfig<?> cache = loadMetricsConfigManager.getMetricConfigInstance(InvokeTimedMetricsConfig.class);
+                    BaseMetricsConfig<?> propertiesConfig = properties.getConfigByType(InvokeTimedMetricsConfig.class);
+                    log.info("cache-config：{}, after-propertiesConfig:{}", cache, propertiesConfig);
+                    Map<InvokeTimedMetrics.ID, InvokeTimedMetricsItemConfig> idInvokeTimedMetricsItemConfigMap = InvokeTimedMetrics.idInvokeAlertRuleConfigMap;
+                    for (Map.Entry<InvokeTimedMetrics.ID, InvokeTimedMetricsItemConfig> entry : idInvokeTimedMetricsItemConfigMap.entrySet()) {
+                        InvokeTimedMetrics.ID id = entry.getKey();
+                        List<String> values = id.getTasValues();
+                        InvokeTimedMetricsItemConfig config = entry.getValue();
+                        InvokeTimedMetricsItemConfig configNew = (InvokeTimedMetricsItemConfig) loadMetricsConfigManager.getMetricsItemConfigInstance(properties, config.getMetricsType(), InvokeTimedMetricsConfig.class);
+                        Meter.Id id1 = new Meter.Id(id.getName(), id.getTags(), null, null, Meter.Type.GAUGE);
+                        InvokeAlertRuleConfig alertRuleConfigNew = AlertMatcher.matchInvokedTime(configNew, values);
+                        meterRegistry.remove(id1);
+                        Gauge.builder(configNew.getMetricsName() + ".alert", alertRuleConfigNew, InvokeAlertRuleConfig :: toMillis)
+                                .tags(id.getTags())
+                                .register(meterRegistry);
                     }
                 } catch (Exception e) {
                     log.error(e.getMessage(), e);

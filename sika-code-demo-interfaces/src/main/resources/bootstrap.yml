@@ -35,9 +35,9 @@ spring:
           - data-id: test1.yaml # 配置 id，必须要加文件后缀
             group: DEFAULT_GROUP # 组别
             refresh: true # 是否支持刷新
-#          - data-id: test # 配置 id，必须要加文件后缀
-#            group: DEFAULT_GROUP # 组别
-#            refresh: true # 是否支持刷新
+          - data-id: sharding-temp.yaml # 配置 id，必须要加文件后缀
+            group: DEFAULT_GROUP # 组别
+            refresh: true # 是否支持刷新
 #          - data-id: sharding
 #            group: DEFAULT_GROUP
 #            refresh: true

@@ -1,6 +1,7 @@
 package com.sika.code.demo.interfaces;
 
 import cn.hippo4j.core.enable.EnableDynamicThreadPool;
+import com.ctrip.framework.apollo.spring.annotation.EnableApolloConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.dromara.dynamictp.core.spring.EnableDynamicTp;
 import org.mybatis.spring.annotation.MapperScan;
@@ -21,7 +22,8 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 @Slf4j
 @EnableDynamicThreadPool
 @EnableDynamicTp
-@EnableDiscoveryClient
+//@EnableDiscoveryClient
+@EnableApolloConfig
 public class SikaCodeDemoApplication {
     //    static {
     //        System.setProperty("log4j2.isThreadContextMapInherimeble", "true");

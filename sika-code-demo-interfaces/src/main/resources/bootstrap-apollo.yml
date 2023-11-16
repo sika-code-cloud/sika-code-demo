@@ -4,12 +4,7 @@ apollo:
     namespaces: application.properties,application1.yaml,sharding-temp.yaml,test1.yaml
 server:
   port: 8000
+
 spring:
   application:
     name: sika-code-demo
-  cloud:
-    nacos:
-      discovery:
-        enabled: false
-      config:
-        enabled: false

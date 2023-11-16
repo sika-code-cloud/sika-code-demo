@@ -22,7 +22,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 @Slf4j
 @EnableDynamicThreadPool
 @EnableDynamicTp
-//@EnableDiscoveryClient
+@EnableDiscoveryClient
 @EnableApolloConfig
 public class SikaCodeDemoApplication {
     //    static {
@@ -30,6 +30,8 @@ public class SikaCodeDemoApplication {
     //        System.setProperty("dubbo.application.logger", "log4j2");
     //    }
     public static void main(String[] args) {
+        System.setProperty("env", "dev");
+        System.setProperty("apollo.config-service", "http://apollo.configservice.sikacode.com/");
         SpringApplication.run(SikaCodeDemoApplication.class, args);
 
     }

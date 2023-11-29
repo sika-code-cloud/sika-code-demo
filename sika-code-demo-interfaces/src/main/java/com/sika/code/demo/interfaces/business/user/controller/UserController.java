@@ -1,6 +1,8 @@
 package com.sika.code.demo.interfaces.business.user.controller;
 
 import com.sika.code.core.result.Result;
+import com.sika.code.db.sharding.algorithm.sharding.BaseTableToDataSourceMappingShardingAlgorithm;
+import com.sika.code.db.sharding.algorithm.sharding.BaseTwiceHashModMappingShardingAlgorithm;
 import com.sika.code.demo.application.business.user.service.UserService;
 import com.sika.code.demo.domain.business.order.repository.OrderRepository;
 import com.sika.code.demo.infrastructure.business.user.pojo.dto.UserDTO;
@@ -89,7 +91,11 @@ public class UserController extends BaseBizController {
 //        } catch (Exception e) {
 //            log.error(e.getMessage(), e);
 //        }
+        BaseTwiceHashModMappingShardingAlgorithm.tableName = "order_1112";
+        BaseTableToDataSourceMappingShardingAlgorithm.dataSourceName = "ds0";
         orderRepository.list(query);
+        BaseTwiceHashModMappingShardingAlgorithm.tableName = "";
+        BaseTableToDataSourceMappingShardingAlgorithm.dataSourceName = "";
         return success("success");
     }
 

@@ -9,11 +9,13 @@ import com.sika.code.demo.infrastructure.business.user.pojo.dto.UserDTO;
 import com.sika.code.demo.infrastructure.business.user.pojo.query.OrderQuery;
 import com.sika.code.demo.infrastructure.business.user.pojo.query.UserQuery;
 import com.sika.code.demo.interfaces.common.controller.BaseBizController;
+import org.apache.shardingsphere.infra.hint.HintManager;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.sql.ResultSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -69,33 +71,33 @@ public class UserController extends BaseBizController {
 
     @RequestMapping(value = "orders")
     public Result list(@RequestBody OrderQuery query) {
-//        try {
-//            messageConsumeDynamicExecutor.execute(() -> {
-//                try {
-//                    TimeUnit.SECONDS.sleep(10L);
-//                } catch (InterruptedException e) {
-//                    throw new RuntimeException(e);
-//                }
-//            });
-//        } catch (Exception e) {
-//            log.error(e.getMessage(), e);
-//        }
-//        try {
-//            dtpExecutor1.execute(() -> {
-//                try {
-//                    TimeUnit.SECONDS.sleep(10L);
-//                } catch (InterruptedException e) {
-//                    throw new RuntimeException(e);
-//                }
-//            });
-//        } catch (Exception e) {
-//            log.error(e.getMessage(), e);
-//        }
-        BaseTwiceHashModMappingShardingAlgorithm.tableName = "order_1112";
-        BaseTableToDataSourceMappingShardingAlgorithm.dataSourceName = "ds0";
-        orderRepository.list(query);
-        BaseTwiceHashModMappingShardingAlgorithm.tableName = "";
-        BaseTableToDataSourceMappingShardingAlgorithm.dataSourceName = "";
+        //        try {
+        //            messageConsumeDynamicExecutor.execute(() -> {
+        //                try {
+        //                    TimeUnit.SECONDS.sleep(10L);
+        //                } catch (InterruptedException e) {
+        //                    throw new RuntimeException(e);
+        //                }
+        //            });
+        //        } catch (Exception e) {
+        //            log.error(e.getMessage(), e);
+        //        }
+        //        try {
+        //            dtpExecutor1.execute(() -> {
+        //                try {
+        //                    TimeUnit.SECONDS.sleep(10L);
+        //                } catch (InterruptedException e) {
+        //                    throw new RuntimeException(e);
+        //                }
+        //            });
+        //        } catch (Exception e) {
+        //            log.error(e.getMessage(), e);
+        //        }
+        try (HintManager hintManager = HintManager.getInstance()) {
+            hintManager.addDatabaseShardingValue("t_mch_order", 1027);
+            hintManager.addTableShardingValue("t_mch_order", 1027);
+            orderRepository.list(query);
+        }
         return success("success");
     }
 

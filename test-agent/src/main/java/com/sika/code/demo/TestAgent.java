@@ -22,7 +22,7 @@ public class TestAgent {
     public static void premain(String agentArgs, Instrumentation instrumentation) {
         AgentBuilder.Transformer transformer = (builder, typeDescription, classLoader, module) -> {
             // 增强方法{selectUser}
-            return builder.method(any())
+            return builder.method(ElementMatchers.named("route"))
                     // 设置拦截器
                     .intercept(MethodDelegation.to(Interceptor.class));
         };
@@ -41,7 +41,7 @@ public class TestAgent {
                         .or(ElementMatchers.isSynthetic())
                 )
                 // 增强的类
-                .type(ElementMatchers.nameStartsWith("com.sika.code.demo.interfaces.business."))
+                .type(ElementMatchers.named("org.apache.shardingsphere.sharding.route.engine.type.standard.ShardingStandardRoutingEngine"))
                 // 增强的类需 增强的方法实现
                 .transform(transformer)
                 // 注册增强类监听器

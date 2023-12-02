@@ -1,25 +1,20 @@
 package com.sika.code.demo.interfaces.business.user.controller;
 
 import com.sika.code.core.result.Result;
-import com.sika.code.db.sharding.algorithm.sharding.BaseTableToDataSourceMappingShardingAlgorithm;
-import com.sika.code.db.sharding.algorithm.sharding.BaseTwiceHashModMappingShardingAlgorithm;
 import com.sika.code.demo.application.business.user.service.UserService;
 import com.sika.code.demo.domain.business.order.repository.OrderRepository;
 import com.sika.code.demo.infrastructure.business.user.pojo.dto.UserDTO;
 import com.sika.code.demo.infrastructure.business.user.pojo.query.OrderQuery;
 import com.sika.code.demo.infrastructure.business.user.pojo.query.UserQuery;
 import com.sika.code.demo.interfaces.common.controller.BaseBizController;
-import org.apache.shardingsphere.infra.hint.HintManager;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
-import java.sql.ResultSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
 
 /**
  * <p>

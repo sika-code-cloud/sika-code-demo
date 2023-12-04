@@ -4,6 +4,8 @@ import com.sika.code.core.base.pojo.query.PageQuery;
 import com.sika.code.db.sharding.annotation.Sharding;
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 /**
  * OrderQuery
  *
@@ -16,6 +18,8 @@ public class OrderQuery extends PageQuery<Long> {
     /** 银盛订单号 */
     @Sharding
     private String orderNo;
+    /** 创建时间 */
+    private LocalDateTime createTime;
 
     @Override
     public Long getId() {
@@ -25,5 +29,21 @@ public class OrderQuery extends PageQuery<Long> {
     @Override
     public void setId(Long id) {
         super.setId(id);
+    }
+
+    public String getOrderNo() {
+        return orderNo;
+    }
+
+    public void setOrderNo(String orderNo) {
+        this.orderNo = orderNo;
+    }
+
+    public LocalDateTime getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(LocalDateTime createTime) {
+        this.createTime = createTime;
     }
 }

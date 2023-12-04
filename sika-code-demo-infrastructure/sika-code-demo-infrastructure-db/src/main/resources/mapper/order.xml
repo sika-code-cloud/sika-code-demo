@@ -201,6 +201,7 @@
     <sql id="query_sql">
         <if test="query.id != null">AND id = #{query.id}</if>
         <if test="query.orderNo != null">AND order_no = #{query.orderNo}</if>
+        <if test="query.createTime != null">AND create_time = #{query.createTime}</if>
     </sql>
 
     <!-- 排序的sql -->

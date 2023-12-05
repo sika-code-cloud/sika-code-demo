@@ -7,6 +7,7 @@ import com.sika.code.demo.infrastructure.business.user.pojo.dto.UserDTO;
 import com.sika.code.demo.infrastructure.business.user.pojo.query.OrderQuery;
 import com.sika.code.demo.infrastructure.business.user.pojo.query.UserQuery;
 import com.sika.code.demo.interfaces.common.controller.BaseBizController;
+import org.apache.shardingsphere.infra.hint.HintManager;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -88,12 +89,12 @@ public class UserController extends BaseBizController {
         //        } catch (Exception e) {
         //            log.error(e.getMessage(), e);
         //        }
-//        try (HintManager hintManager = HintManager.getInstance()) {
-//            hintManager.addDatabaseShardingValue("t_mch_order", 1027);
-//            hintManager.addTableShardingValue("t_mch_order", 1027);
-//            orderRepository.list(query);
-//        }
-        orderRepository.list(query);
+        try (HintManager hintManager = HintManager.getInstance()) {
+            hintManager.addDatabaseShardingValue("t_mch_order", 2021);
+            hintManager.addTableShardingValue("t_mch_order", 1027);
+            orderRepository.list(query);
+        }
+//        orderRepository.list(query);
         return success("success");
     }
 

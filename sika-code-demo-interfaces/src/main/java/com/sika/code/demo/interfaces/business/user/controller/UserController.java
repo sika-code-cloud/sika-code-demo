@@ -89,12 +89,12 @@ public class UserController extends BaseBizController {
         //        } catch (Exception e) {
         //            log.error(e.getMessage(), e);
         //        }
-        try (HintManager hintManager = HintManager.getInstance()) {
-            hintManager.addDatabaseShardingValue("t_mch_order", 2021);
-            hintManager.addTableShardingValue("t_mch_order", 1027);
-            orderRepository.list(query);
-        }
-//        orderRepository.list(query);
+//        try (HintManager hintManager = HintManager.getInstance()) {
+//            hintManager.addDatabaseShardingValue("t_mch_order", 2021);
+//            hintManager.addTableShardingValue("t_mch_order", 1027);
+//            orderRepository.list(query);
+//        }
+        orderRepository.list(query);
         return success("success");
     }
 

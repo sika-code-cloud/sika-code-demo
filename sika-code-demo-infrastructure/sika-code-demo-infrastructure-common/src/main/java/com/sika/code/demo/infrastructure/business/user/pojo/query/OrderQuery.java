@@ -1,7 +1,6 @@
 package com.sika.code.demo.infrastructure.business.user.pojo.query;
 
 import com.sika.code.core.base.pojo.query.PageQuery;
-import com.sika.code.db.sharding.annotation.Sharding;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -16,7 +15,6 @@ import java.time.LocalDateTime;
 public class OrderQuery extends PageQuery<Long> {
 
     /** 银盛订单号 */
-    @Sharding
     private String orderNo;
     /** 创建时间 */
     private LocalDateTime createTime;

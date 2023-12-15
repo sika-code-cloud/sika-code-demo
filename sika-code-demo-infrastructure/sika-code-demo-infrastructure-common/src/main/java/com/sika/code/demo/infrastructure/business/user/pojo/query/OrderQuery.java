@@ -15,6 +15,7 @@ import java.time.LocalDateTime;
 public class OrderQuery extends PageQuery<Long> {
 
     /** 银盛订单号 */
+//    @Sharding
     private String orderNo;
     /** 创建时间 */
     private LocalDateTime createTime;
